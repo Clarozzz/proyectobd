@@ -20,32 +20,10 @@
         </div>
     </nav>
 
-    <main id="paginaInicio" class="mt-5">
-        <h1 class="text-center texto-grande">Recursos humanos</h1>
-        <h3 class="text-center texto-mediano mt-5 mb-4">Iniciar sesion</h3>
+    <main id="paginaPrincipal" class="my-5">
+        <h1 class="text-center mb-5">Empleados</h1>
 
-        <form action="{{route('recursosHumanos.index')}}">
-            <div class="d-flex flex-column align-items-center">
-
-                <div class="col-md-3">
-                    <label class="form-label">Email:</label>
-                    <input name="email" type="text" class="form-control form-control-lg color-inputs mb-4">
-                </div>
-
-                <div class="col-md-3">
-                    <label class="form-label texto-pequeno">Contrasena:</label>
-                    <input name="contrasena" type="password" class="form-control form-control-lg">
-                </div>
-                <span id="aviso" class="mt-3" style="color: red;"></span>
-            </div>
-
-
-            <div class="text-center">
-                <button class="btn btn-dark btn-lg mt-5">Iniciar sesion</button>
-            </div>
-        </form>
     </main>
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>

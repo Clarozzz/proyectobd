@@ -27,31 +27,43 @@
             <div class="row">
                 <div class="col px-5">
                     <div class="card mb-3">
-                        <img src="..." class="card-img-top" alt="...">
+                        <div class="p-4">
+                            <img src="{{URL('images/motoristas.png')}}" class="card-img-top" alt="...">
+                        </div>
                         <div class="card-body">
                             <h5 class="card-title">Motoristas</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <p class="card-text">Apartado para administrar a los motoristas.</p>
+                            <form action="{{route('empleados.motoristas')}}">
+                                <button class="btn btn-primary">Ir a motoristas</button>
+                            </form>
                         </div>
                     </div>
                 </div>
                 <div class="col px-5">
                     <div class="card mb-3">
-                        <img src="..." class="card-img-top" alt="...">
+                        <div class="p-4">
+                            <img src="{{URL('images/solicitudes.png')}}" class="card-img-top" alt="...">
+                        </div>
                         <div class="card-body">
                             <h5 class="card-title">Solicitudes</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <p class="card-text">Apartado para administrar las solicitudes</p>
+                            <form action="{{route('empleados.solicitudes')}}">
+                                <button class="btn btn-primary">Ir a solicitudes</button>
+                            </form>
                         </div>
                     </div>
                 </div>
                 <div class="col px-5">
                     <div class="card mb-3">
-                        <img src="..." class="card-img-top" alt="...">
+                        <div class="p-4">
+                            <img src="{{URL('images/clientes.png')}}" class="card-img-top" alt="...">
+                        </div>
                         <div class="card-body">
                             <h5 class="card-title">Clientes</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <p class="card-text">Apartado para administrar datos de clientes</p>
+                            <form action="{{route('empleados.clientes')}}">
+                                <button class="btn btn-primary">Ir a clientes</button>
+                            </form>
                         </div>
                     </div>
                 </div>
