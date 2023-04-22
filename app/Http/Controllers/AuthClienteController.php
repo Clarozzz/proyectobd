@@ -13,6 +13,7 @@ use \stdClass;
 use HasAvatar;
 
 use App\Http\Controllers\API\BaseController as BaseController;
+use App\Models\Cliente;
 use Illuminate\Http\JsonResponse;
 
 
@@ -27,6 +28,7 @@ class AuthClienteController extends Controller
         $validator = Validator::make($request->all(),
             [
                 'primerNombre' => 'required|string|max:25',
+                'nombreUsuario' => 'required|string|max:25',
                 'primerApellido' => 'required|string|max:25',
                 'telefono' => 'required|string|max:25|unique:persona',
                 'dni' => 'required|string|max:25|unique:persona',
@@ -61,10 +63,23 @@ class AuthClienteController extends Controller
             ]
             );
 
+
+            $cliente = Cliente::create(
+                [
+                    
+                    'nombreUsuario' => $request ->nombreUsuario,
+                    'verificado' => true,
+                    'esExonerado' => false,
+                    'idPersona' => $user->idPersona
+                ]
+                );
+
             $token = $user->createToken('auth_token')->plainTextToken;
 
             return response()
             ->json(['data' => $user, 'access_token' => $token , 'token_type' => 'Bearer']);
+
+            
 
     }
 
@@ -112,6 +127,9 @@ class AuthClienteController extends Controller
 
             $user = Auth::user();
             if ($user instanceof \App\Models\User) {
+
+
+                $user = User::with('cliente')->find($user->idPersona);
                 
                 $token = $user->createToken('auth_token')->plainTextToken;
                 return response()

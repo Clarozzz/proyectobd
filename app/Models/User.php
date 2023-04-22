@@ -45,5 +45,9 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    public function cliente()
+    {
+        return $this->hasOne(Cliente::class, 'idPersona' , 'idPersona');        
+    }
  
 }
