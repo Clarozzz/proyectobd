@@ -17,8 +17,7 @@ class Cliente extends Model
     protected $fillable = [
         'nombreUsuario',
         'esExonerado',
-        'verificado',
-        'idPersona'
+        'idPersona',
     ];
 
     public function persona()

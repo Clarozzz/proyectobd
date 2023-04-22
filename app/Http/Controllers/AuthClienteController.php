@@ -14,10 +14,9 @@ use HasAvatar;
 
 use App\Http\Controllers\API\BaseController as BaseController;
 use App\Models\Cliente;
+use Illuminate\Database\Events\TransactionBeginning;
 use Illuminate\Http\JsonResponse;
-
-
-
+use Illuminate\Support\Facades\DB;
 
 class AuthClienteController extends Controller
 {
@@ -26,9 +25,9 @@ class AuthClienteController extends Controller
 
     public function register (Request $request){
         $validator = Validator::make($request->all(),
-            [
+            [                
                 'primerNombre' => 'required|string|max:25',
-                'nombreUsuario' => 'required|string|max:25',
+                'nombreUsuario' => 'required|string|max:25|unique:cliente',
                 'primerApellido' => 'required|string|max:25',
                 'telefono' => 'required|string|max:25|unique:persona',
                 'dni' => 'required|string|max:25|unique:persona',
@@ -43,87 +42,86 @@ class AuthClienteController extends Controller
             return response()->json(['errors' => $validator->errors()], 422);
         }
 
-        $user = User::create(
-            [
-                
-                'primerNombre' => $request ->primerNombre,
-                'segundoNombre' => $request ->segundoNombre,
-                'primerApellido' => $request ->primerApellido,                
-                'segundoApellido' => $request ->segundoApellido,
-                'telefono' => $request ->telefono,
-                'dni' => $request ->dni,
-                'rtn' => $request ->rtn,
-                'fechaNacimiento' => date('Y-m-d', strtotime($request->fechaNacimiento)), // convertir la cadena a un objeto de fecha
-                'fechaAlta' => Carbon::now(),
-                'nombreEmpresa' => $request ->nombreEmpresa,
+        try{ //transaccion para asegurar que solo exista un cliente por persona y viceversa
+            DB::connection('sqlsrv')->beginTransaction();
 
 
-                'email' => $request ->email,
-                'password' => bcrypt($request ->password)
-            ]
+            $user = User::create(
+                [
+
+                    'primerNombre' => $request ->primerNombre,
+                    'segundoNombre' => $request ->segundoNombre,
+                    'primerApellido' => $request ->primerApellido,                
+                    'segundoApellido' => $request ->segundoApellido,
+                    'telefono' => $request ->telefono,
+                    'dni' => $request ->dni,
+                    'rtn' => $request ->rtn,
+                    'fechaNacimiento' => date('Y-m-d', strtotime($request->fechaNacimiento)), // convertir la cadena a un objeto de fecha
+                    'fechaAlta' => Carbon::now(),
+                    'nombreEmpresa' => $request ->nombreEmpresa,
+                    'estaActivo' => true,
+
+
+                    'email' => $request ->email,
+                    'password' => bcrypt($request ->password)
+                ]
             );
 
+            $esExonerado = false;
 
-            $cliente = Cliente::create(
+            if($request ->esExonerado != null){
+                $esExonerado = $request ->esExonerado;
+            }
+
+
+            Cliente::create(
                 [
                     
                     'nombreUsuario' => $request ->nombreUsuario,
-                    'verificado' => true,
-                    'esExonerado' => false,
-                    'idPersona' => $user->idPersona
+                    'esExonerado' => $esExonerado,
+                    'idPersona' => $user->idPersona,
+                    
                 ]
                 );
 
             $token = $user->createToken('auth_token')->plainTextToken;
+            DB::connection('sqlsrv')->commit();
 
             return response()
             ->json(['data' => $user, 'access_token' => $token , 'token_type' => 'Bearer']);
 
             
+        }
 
+         catch (\Exception $e) {
+            DB::connection('sqlsrv')->rollback();
+            throw $e;
+            
+            return response()->json(['message' => 'Error creando cliente'], 500);
+        }
     }
 
 
-
-
-    // public function login(Request $request){
-
-    //     if(!Auth::attempt($request->only('email', 'password')) )
-    //     {
-    //         return response()
-    //         ->json(['message' => 'No autorizado'], 401);
-    //     }
-        
-
-
-    //     $user = User::where('email', $request['email'])->firstOrFail();
-
-    //     // if($user->Admin == null){
-    //     //     return response()
-    //     //     ->json(['message' => 'No eres admin'], 401);
-    //     // }
-
-    //     $token = $user -> createToken('auth_token') -> plainTextToken;
-
-    //     return response()
-    //         ->json(
-    //             [
-    //                 'message' => 'Hola '.$user->name,
-    //                 'accessToken' => $token,
-    //                 'token_type' => 'Bearer',
-    //                 'user' => $user
-    //             ]
-    //         );
-        
-    // }
 
     
 
     public function login(Request $request)
     {
-        if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){ 
+        if(Auth::attempt(['email' => $request->email, 'password' => $request->password]) ){ 
             $user = Auth::user(); 
 
+            if($user->cliente == null){//no esta relacionado a un cliente
+                
+                return response()
+                   ->json(['message' => 'No autorizado cliente'], 401);
+                } 
+
+
+            
+
+
+            $user->estaActivo = true;
+            $user->save();
 
             $user = Auth::user();
             if ($user instanceof \App\Models\User) {
@@ -145,14 +143,13 @@ class AuthClienteController extends Controller
                 return response()
            ->json(['message' => 'fallo interno'], 401);
             }
+          
+        }
+        
 
-            
-            
-        } 
-        else{ 
             return response()
            ->json(['message' => 'No autorizado'], 401);
-        } 
+        
     }
 
 
@@ -160,7 +157,9 @@ class AuthClienteController extends Controller
     {
         $user = Auth::user();
 
-        
+        $user->estaActivo = false;
+        $user->save();
+
 
 
         if ($user instanceof \App\Models\User) {

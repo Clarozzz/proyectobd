@@ -20,12 +20,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 /* rutas accesibles a usuarios en general */
-Route::post('registro', [AuthClienteController::class, 'register']);
+Route::post('cliente/registro', [AuthClienteController::class, 'register']);
+Route::post('cliente/iniciarSesion', [AuthClienteController::class, 'login']);
 
-Route::post('iniciarSesion', [AuthClienteController::class, 'login']);
 
-
-Route::group(['middleware' => 'auth:sanctum'],function(){ //rutas accesibles solo a usuarios logeados
+Route::group(['prefix' => 'cliente','middleware' => 'auth:sanctum'],function(){ //rutas accesibles solo a usuarios clientes logeados "api/cliente/.."
     Route::get('cerrarSesion',[AuthClienteController::class,'logout']);
 
     Route::get('prueba', function() {
