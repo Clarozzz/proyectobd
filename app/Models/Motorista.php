@@ -5,26 +5,25 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Cliente extends Model
+class Motorista extends Model
 {
     use HasFactory;
 
-
-    protected $table = 'cliente';
-    public $primaryKey = 'idCliente';
+    protected $table = 'motorista';
+    public $primaryKey = 'idMotorista';
     public $timestamps = false;
 
     protected $fillable = [
-        'nombreUsuario',
-        'esExonerado',
+        'cuentaBancaria',
+        'nombreBanco',
+        'ubicacionActual',
         'idPersona',
     ];
+
 
     public function persona()
     {
         return $this->belongsTo(User::class,  'idPersona', 'idPersona');
     }
-
-
 
 }

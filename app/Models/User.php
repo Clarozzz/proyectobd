@@ -50,5 +50,10 @@ class User extends Authenticatable
     {
         return $this->hasOne(Cliente::class, 'idPersona' , 'idPersona');        
     }
+
+    public function motorista()
+    {
+        return $this->hasOne(Motorista::class, 'idPersona' , 'idPersona');        
+    }
  
 }
