@@ -35,6 +35,7 @@ Route::get('/clientes/factura', function () {
     return view('clientes.factura');
 })->name('clientes.factura');
 
+
 /*------------- 
 
     Motoristas 
@@ -74,3 +75,38 @@ Route::get('/empleados/index', function () {
     return view('empleados.index');
 })->name('empleados.index');
 
+Route::get('/empleados/motoristas', function () {
+    return view('empleados.motoristas');
+})->name('empleados.motoristas');
+
+Route::get('/empleados/solicitudes', function () {
+    return view('empleados.solicitudes');
+})->name('empleados.solicitudes');
+
+Route::get('/empleados/clientes', function () {
+    return view('empleados.clientes');
+})->name('empleados.clientes');
+
+Route::get('/empleados/asignarSolicitud', function () {
+    return view('empleados.asignarsolicitud');
+})->name('empleados.asignarSolicitud');
+
+
+/*------------- 
+
+    RRHH 
+    
+-------------*/
+
+
+Route::get('/recursosHumanos', function () {
+    return view('rrhh.inicio');
+})->name('recursosHumanos.inicio');
+
+Route::get('/recursosHumanos/index', function () {
+    return view('rrhh.index');
+})->name('recursosHumanos.index');
+
+Route::get('/recursosHumanos/empleados', function () {
+    return view('rrhh.empleados');
+})->name('recursosHumanos.empleados');
