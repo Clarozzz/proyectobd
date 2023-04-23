@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Permiso extends Model
 {
     use HasFactory;
+
+    protected $table = 'permisos';
+
+    public $timestamps = false;
+
+    public $primaryKey = 'idPermiso';
 }

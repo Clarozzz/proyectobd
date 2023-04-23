@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Evaluacio;
+use App\Models\CatalogoEmpleado;
 use Illuminate\Http\Request;
 
-class EvaluacioController extends Controller
+class CatalogoEmpleadoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class EvaluacioController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Evaluacio $evaluacio)
+    public function show(CatalogoEmpleado $catalogoEmpleado)
     {
         //
     }
@@ -42,7 +42,7 @@ class EvaluacioController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Evaluacio $evaluacio)
+    public function edit(CatalogoEmpleado $catalogoEmpleado)
     {
         //
     }
@@ -50,7 +50,7 @@ class EvaluacioController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Evaluacio $evaluacio)
+    public function update(Request $request, CatalogoEmpleado $catalogoEmpleado)
     {
         //
     }
@@ -58,7 +58,7 @@ class EvaluacioController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Evaluacio $evaluacio)
+    public function destroy(CatalogoEmpleado $catalogoEmpleado)
     {
         //
     }
