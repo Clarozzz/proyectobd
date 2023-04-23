@@ -66,6 +66,10 @@ Route::get('/motoristas/solicitud', function () {
     
 -------------*/
 
+Route::get('/prueba', function () {
+    return 'prueba';
+});
+
 
 Route::get('/empleados', function () {
     return view('empleados.inicio');
