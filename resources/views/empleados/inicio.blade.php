@@ -24,7 +24,7 @@
         <h1 class="text-center texto-grande">Administradores</h1>
         <h3 class="text-center texto-mediano mt-5 mb-4">Iniciar sesion</h3>
 
-        <form action="{{route('empleados.index')}}">
+        <form action="{{route('empleados.inicio')}}">
             <div class="d-flex flex-column align-items-center">
 
                 <div class="col-md-3">

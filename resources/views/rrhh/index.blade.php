@@ -33,7 +33,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Empleados</h5>
                             <p class="card-text">Apartado para administrar a los empleados.</p>
-                            <form action="{{route('recursosHumanos.empleados')}}">
+                            <form action="{{route('talentoHumano.empleados')}}">
                                 <button class="btn btn-dark">Ir a empleados</button>
                             </form>
                         </div>
