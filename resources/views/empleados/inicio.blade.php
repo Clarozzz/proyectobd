@@ -11,22 +11,22 @@
 
 <body class="bg-body-tertiary">
 
-    <nav id="navbar-inicio" class="navbar sticky-top bg-primary text-white">
+    <nav id="navbar-inicio" class="navbar sticky-top bg-dark text-white">
         <div class="container justify-content-center">
             <div class="d-flex">
-                <img src="{{URL('images/logo.png')}}" alt="Logo" height="55" class="d-inline-block align-text-top">
+                <img src="{{URL('images/logo.png')}}" alt="Logo" height="55" class="d-inline-block align-text-top bg-white rounded-circle me-2">
                 <h1 id="encabezado-navbar" class="m-0 align-self-center">SCAM</h1>
             </div>
         </div>
     </nav>
 
     <main id="paginaInicio" class="mt-5">
-        <h1 class="text-center texto-grande">Administradores</h1>
+        <h1 class="text-center texto-grande">Recursos humanos</h1>
         <h3 class="text-center texto-mediano mt-5 mb-4">Iniciar sesion</h3>
 
-        <form method="POST" action="{{route('login.inicioAdmin')}}" >
-             @csrf
+        <form method="POST" action="{{route('login.inicioRRHH')}}">
             <div class="d-flex flex-column align-items-center">
+                @csrf
 
                 <div class="col-md-3">
                     <label class="form-label">Email:</label>
@@ -39,6 +39,7 @@
                 </div>
                 <span id="aviso" class="mt-3" style="color: red;"></span>
 
+
                 @error('message')
                 <div class="alert alert-danger" role="alert">
                     {{$message}}
@@ -46,10 +47,12 @@
                 @enderror
             </div>
 
+
             
 
+
             <div class="text-center">
-                <button type="submit" class="btn btn-primary btn-lg mt-5">Iniciar sesion</button>
+                <button type="submit" class="btn btn-dark btn-lg mt-5">Iniciar sesion</button>
             </div>
         </form>
     </main>
