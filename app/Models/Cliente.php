@@ -9,9 +9,21 @@ class Cliente extends Model
 {
     use HasFactory;
 
-    protected $table = 'cliente';
 
+    protected $table = 'cliente';
+    public $primaryKey = 'idCliente';
     public $timestamps = false;
 
-    public $primaryKey = 'idCliente';
+    protected $fillable = [
+        'nombreUsuario',
+        'esExonerado',
+        'idPersona',
+    ];
+
+    public function persona()
+    {
+        return $this->belongsTo(User::class,  'idPersona', 'idPersona');
+    }
+
+
 }

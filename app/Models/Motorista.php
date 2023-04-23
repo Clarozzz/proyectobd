@@ -10,8 +10,21 @@ class Motorista extends Model
     use HasFactory;
 
     protected $table = 'motorista';
-
+    public $primaryKey = 'idMotorista';
     public $timestamps = false;
 
-    public $primaryKey = 'idMotorista';
+    protected $fillable = [
+        'cuentaBancaria',
+        'nombreBanco',
+        'ubicacionActual',
+        'idPersona',
+    ];
+
+
+    public function persona()
+    {
+        return $this->belongsTo(User::class,  'idPersona', 'idPersona');
+    }
+
+
 }

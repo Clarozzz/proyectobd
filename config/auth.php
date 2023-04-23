@@ -34,13 +34,19 @@ return [
     | Supported: "session"
     |
     */
-
     'guards' => [
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
         ],
+     
+        'api' => [
+            'driver' => 'sanctum',
+            'provider' => 'users',
+            'hash' => false,
+        ],
     ],
+    
 
     /*
     |--------------------------------------------------------------------------
@@ -58,6 +64,8 @@ return [
     | Supported: "database", "eloquent"
     |
     */
+
+   
 
     'providers' => [
         'users' => [
