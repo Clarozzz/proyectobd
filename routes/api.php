@@ -19,7 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-/* rutas accesibles a usuarios en general */
+/* rutas accesibles a usuarios en general CLIENTES*/  
 Route::post('cliente/registro', [AuthClienteController::class, 'register']);
 Route::post('cliente/iniciarSesion', [AuthClienteController::class, 'login']);
 
