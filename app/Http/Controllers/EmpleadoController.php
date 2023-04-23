@@ -12,7 +12,32 @@ class EmpleadoController extends Controller
      */
     public function index()
     {
-        //
+        return view('empleados.inicio');
+    }
+
+    public function indexClientes()
+    {
+        return view('empleados.clientes');
+    }
+
+    public function indexSolicitudes()
+    {
+        return view('empleados.solicitudes');
+    }
+
+    public function indexDashboard()
+    {
+        return view('empleados.index');
+    }
+
+    public function indexMotoristas()
+    {
+        return view('empleados.motoristas');
+    }
+
+    public function indexAsignarSolicitud()
+    {
+        return view('empleados.asignarsolicitud');
     }
 
     /**
