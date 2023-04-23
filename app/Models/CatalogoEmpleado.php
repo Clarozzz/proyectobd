@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Turnos extends Model
+class CatalogoEmpleado extends Model
 {
     use HasFactory;
 
-    protected $table = 'turnos';
+    protected $table = 'catalogoEmpleado';
 
     public $timestamps = false;
 
-    public $primaryKey = 'idTurno';
+    public $primaryKey = 'idPuesto';
 }

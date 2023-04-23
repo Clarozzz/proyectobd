@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class TipoPagoFactura extends Model
 {
     use HasFactory;
+
+    protected $table = 'tiposPagoFactura';
+
+    public $timestamps = false;
+
+    public $primaryKey = 'idTiposPago';
 }

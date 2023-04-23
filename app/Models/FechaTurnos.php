@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class FechaTurnos extends Model
 {
     use HasFactory;
+
+    protected $table = 'fechaTurnos';
+
+    public $timestamps = false;
+
+    public $primaryKey = 'idTurno';
 }

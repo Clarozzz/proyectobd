@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Registro extends Model
 {
     use HasFactory;
+
+    protected $table = 'registro';
+
+    public $timestamps = false;
+
+    public $primaryKey = 'idLog';
 }
