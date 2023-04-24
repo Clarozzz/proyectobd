@@ -12,7 +12,22 @@ class MotoristaController extends Controller
      */
     public function index()
     {
-        //
+        return view('motoristas.inicio');
+    }
+
+    public function indexRegistro()
+    {
+        return view('motoristas.registro');
+    }
+
+    public function indexSolicitud()
+    {
+        return view('motoristas.solicitud');
+    }
+
+    public function indexEspera()
+    {
+        return view('motoristas.espera');
     }
 
     /**

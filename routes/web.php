@@ -1,6 +1,8 @@
 <?php
 
+
 use App\Http\Controllers\AuthEmpleadosController;
+
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\MotoristaController;
 use App\Http\Controllers\EmpleadoController;
@@ -23,6 +25,7 @@ use Illuminate\Support\Facades\Route;
     Clientes 
 
 -------------*/
+
 
 
 
@@ -66,6 +69,7 @@ Route::get('/motoristas/registro', [MotoristaController::class, 'indexRegistro']
 
 Route::get('/motoristas/espera', [MotoristaController::class, 'indexEspera'])->name('motoristas.espera');
 
+
 Route::get('/motoristas/solicitud', [MotoristaController::class, 'indexSolicitud'])->name('motoristas.solicitud');
 
 // Route::get('/motoristas', function () {
@@ -75,6 +79,7 @@ Route::get('/motoristas/solicitud', [MotoristaController::class, 'indexSolicitud
 // Route::get('/motoristas/registro', function () {
 //     return view('motoristas.registro');
 // })->name('motoristas.registro');
+
 
 // Route::get('/motoristas/espera', function () {
 //     return view('motoristas.espera');
@@ -90,6 +95,7 @@ Route::get('/motoristas/solicitud', [MotoristaController::class, 'indexSolicitud
     Empleados 
     
 -------------*/
+
 
 
 
@@ -137,6 +143,7 @@ Route::get('/empleados/asignarsolicitud', [EmpleadoController::class, 'indexAsig
 //     return view('empleados.motoristas');
 // })->name('empleados.motoristas');
 
+
 // Route::get('/empleados/solicitudes', function () {
 //     return view('empleados.solicitudes');
 // })->name('empleados.solicitudes');
@@ -156,6 +163,7 @@ Route::get('/empleados/asignarsolicitud', [EmpleadoController::class, 'indexAsig
     
 -------------*/
 
+
 Route::get('/talentoHumano', [TalentoHumanoController::class, 'index'])
 ->middleware('guest') //puede acceder sin logearse
 ->name('talentoHumano.inicio');
@@ -174,6 +182,7 @@ Route::post('/talentoHumano/loginRRHH', [AuthEmpleadosController::class, 'inicio
 Route::get('/talentoHumano/logoutRRHH', [AuthEmpleadosController::class, 'cerrarSesionRRHH'])
 ->middleware('auth.RRHH')
 ->name('logout.cerrarRRHH');
+
 // Route::get('/recursosHumanos', function () {
 //     return view('rrhh.inicio');
 // })->name('recursosHumanos.inicio');
