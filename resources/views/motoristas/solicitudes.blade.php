@@ -23,7 +23,7 @@
     <main id="paginaPrincipal" class="my-5">
         <h1 class="text-center mb-5">Solicitudes</h1>
 
-        @foreach ($solicitud as $solicitud)
+        @foreach ($solicitudes as $solicitud)
         <div class="d-flex flex-column align-items-center mt-3 mx-4">
 
             <div class="col-3">
@@ -33,11 +33,11 @@
                         <h6 class="text-center"><strong>Direccion actual:</strong> {{$solicitud->direccionActual}}</h6>
                         <h6 class="text-center"><strong>Destino:</strong> {{$solicitud->direccionDestino}}</h6>
                         <h6 class="text-center"><strong>Fecha:</strong> {{$solicitud->fecha}}</h6>
-                        <h6 class="text-center"><strong>Sub total:</strong> {{$solicitud->subTotal}}s</h6>
-                        <h6 class="text-center"><strong>Impuesto:</strong> {{$valorImpuesto->valor}}</h6>
-                        <h6 class="text-center"><strong>Total:</strong> {{$solicitud->total}}</h6>
-                        <h6 class="text-center"><strong>Cliente:</strong> {{$cliente->nombreUsuario}}</h6>
-                        <h6 class="text-center"><strong>Telefono:</strong> {{$persona->telefono}}</h6>
+                        <h6 class="text-center"><strong>Sub total:</strong> {{$solicitud->subTotal}}lps</h6>
+                        <h6 class="text-center"><strong>Impuesto:</strong> {{$solicitud->valor}}%</h6>
+                        <h6 class="text-center"><strong>Total:</strong> {{$solicitud->total}}lps</h6>
+                        <h6 class="text-center"><strong>Cliente:</strong> {{$solicitud->nombreUsuario}}</h6>
+                        <h6 class="text-center"><strong>Telefono:</strong> {{$solicitud->telefono}}</h6>
 
                         <!-- Aceptar te debe llevar a la vista de factura -->
                         <form action="#">

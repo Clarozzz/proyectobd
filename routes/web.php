@@ -69,7 +69,6 @@ Route::get('/motoristas/registro', [MotoristaController::class, 'indexRegistro']
 
 Route::get('/motoristas/espera', [MotoristaController::class, 'indexEspera'])->name('motoristas.espera');
 
-
 Route::get('/motoristas/solicitud', [MotoristaController::class, 'indexSolicitud'])->name('motoristas.solicitud');
 
 // Route::get('/motoristas', function () {

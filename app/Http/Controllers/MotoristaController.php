@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Motorista;
+use App\Models\Solicitud;
 use Illuminate\Http\Request;
 
 class MotoristaController extends Controller
@@ -22,7 +23,12 @@ class MotoristaController extends Controller
 
     public function indexSolicitud()
     {
-        return view('motoristas.solicitud');
+        $solicitudes = Solicitud::select()
+            ->join('cliente', 'cliente.idCliente', '=', 'solicitud.idCliente')
+            ->join('valorImpuesto', 'valorImpuesto.idImpuesto', '=', 'solicitud.idImpuesto')
+            ->join('persona', 'persona.idPersona', '=', 'cliente.idPersona')
+            ->get();
+        return view('motoristas.solicitudes', compact('solicitudes'));
     }
 
     public function indexEspera()
