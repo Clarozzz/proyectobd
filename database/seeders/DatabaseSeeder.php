@@ -18,12 +18,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\User::factory(10)->create();
+        // \App\Models\User::factory(10)->create();
 
-        \App\Models\User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // \App\Models\User::factory()->create([
+        //     'name' => 'Test User',
+        //     'email' => 'test@example.com',
+        // ]);
 
 
 
@@ -35,20 +35,21 @@ class DatabaseSeeder extends Seeder
 
                 'primerNombre' => 'Admin',
                 'primerApellido' => 'Admin',               
-                'telefono' => '2514511',
-                'dni' => '14745414',
-                'rtn' => '5515121',
+                'telefono' => '251334511',
+                'dni' => '14745433314',
+                'rtn' => '551665121',
                 'fechaNacimiento' => date('2000-02-05'), // convertir la cadena a un objeto de fecha
                 'fechaAlta' => Carbon::now(),
                 'estaActivo' => true,
                 'email' => 'admin@gmail.com',
-                'password' => bcrypt('12345678')
+                'password' => bcrypt('12345678'),
+                'estaHabilitado' =>true
             ]
         );
 
         $empleado =  Empleado::create(
             [
-            'activo' => true,
+           
             'idPersona'   => $user->idPersona,  
 
             ]
@@ -80,20 +81,21 @@ class DatabaseSeeder extends Seeder
     
                     'primerNombre' => 'rrhh',
                     'primerApellido' => 'rrhh',               
-                    'telefono' => '25145114',
-                    'dni' => '147454143',
-                    'rtn' => '55151214',
+                    'telefono' => '2514544114',
+                    'dni' => '1474335413443',
+                    'rtn' => '55151214434',
                     'fechaNacimiento' => date('2000-02-05'), // convertir la cadena a un objeto de fecha
                     'fechaAlta' => Carbon::now(),
                     'estaActivo' => true,
                     'email' => 'rrhh@gmail.com',
-                    'password' => bcrypt('12345678')
+                    'password' => bcrypt('12345678'),
+                    'estaHabilitado' =>true
                 ]
             );
     
             $empleado =  Empleado::create(
                 [
-                'activo' => true,
+                
                 'idPersona'   => $user->idPersona,  
     
                 ]
