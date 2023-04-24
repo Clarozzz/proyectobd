@@ -52,7 +52,7 @@
         <h6 class="text-center"><strong>total:</strong> {{$solicitud->total}}</h6>
 
         <form action="#">
-            <p class="text-center fs-5 px-5 mt-5"><button class="btn btn-success">Aceptar</button></p>
+            <p class="text-center fs-5 px-5 mt-5"><button class="btn btn-success">Finalizar</button></p>
         </form>
 
     </main>
