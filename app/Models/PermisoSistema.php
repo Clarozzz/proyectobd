@@ -14,4 +14,18 @@ class PermisoSistema extends Model
     public $timestamps = false;
 
     public $primaryKey = 'idPermisoSis';
+
+
+    
+    protected $fillable = [
+        'nivelPermiso',
+        'descripcion',
+        'idEmpleado',
+    ];
+
+
+    public function empleado(){
+        return $this->belongsTo(Empleado::class,  'idEmpleado', 'idEmpleado');        
+    }
+    
 }

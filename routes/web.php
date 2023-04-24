@@ -1,5 +1,8 @@
 <?php
 
+
+use App\Http\Controllers\AuthEmpleadosController;
+
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\MotoristaController;
 use App\Http\Controllers\EmpleadoController;
@@ -22,6 +25,8 @@ use Illuminate\Support\Facades\Route;
     Clientes 
 
 -------------*/
+
+
 
 
 
@@ -64,6 +69,7 @@ Route::get('/motoristas/registro', [MotoristaController::class, 'indexRegistro']
 
 Route::get('/motoristas/espera', [MotoristaController::class, 'indexEspera'])->name('motoristas.espera');
 
+
 Route::get('/motoristas/solicitud', [MotoristaController::class, 'indexSolicitud'])->name('motoristas.solicitud');
 
 // Route::get('/motoristas', function () {
@@ -73,6 +79,7 @@ Route::get('/motoristas/solicitud', [MotoristaController::class, 'indexSolicitud
 // Route::get('/motoristas/registro', function () {
 //     return view('motoristas.registro');
 // })->name('motoristas.registro');
+
 
 // Route::get('/motoristas/espera', function () {
 //     return view('motoristas.espera');
@@ -90,17 +97,39 @@ Route::get('/motoristas/solicitud', [MotoristaController::class, 'indexSolicitud
 -------------*/
 
 
-Route::get('/empleados', [EmpleadoController::class, 'index'])->name('empleados.inicio');
 
-Route::get('/empleados/clientes', [EmpleadoController::class, 'indexClientes'])->name('empleados.clientes');
 
-Route::get('/empleados/solicitudes', [EmpleadoController::class, 'indexSolicitudes'])->name('empleados.solicitudes');
+Route::get('/empleados', [EmpleadoController::class, 'index'])
+->middleware('guest') //puede acceder sin logearse
+->name('empleados.inicio');
 
-Route::get('/empleados/motoristas', [EmpleadoController::class, 'indexMotoristas'])->name('empleados.motoristas');
+Route::post('/empleados/loginAdmin', [AuthEmpleadosController::class, 'inicioAdmin'])
 
-Route::get('/empleados/dashboard', [EmpleadoController::class, 'indexDashboard'])->name('empleados.dashboard');
+->name('login.inicioAdmin');
 
-Route::get('/empleados/asignarsolicitud', [EmpleadoController::class, 'indexAsignarSolicitud'])->name('empleados.asignarsolicitud');
+Route::get('/empleados/logoutAdmin', [AuthEmpleadosController::class, 'cerrarSesionAdmin'])
+->middleware('auth.admin')
+->name('logout.cerrarAdmin');
+
+Route::get('/empleados/clientes', [EmpleadoController::class, 'indexClientes'])
+->middleware('auth.admin')
+->name('empleados.clientes');
+
+Route::get('/empleados/solicitudes', [EmpleadoController::class, 'indexSolicitudes'])
+->middleware('auth.admin')
+->name('empleados.solicitudes');
+
+Route::get('/empleados/motoristas', [EmpleadoController::class, 'indexMotoristas'])
+->middleware('auth.admin')
+->name('empleados.motoristas');
+
+Route::get('/empleados/dashboard', [EmpleadoController::class, 'indexDashboard'])
+->middleware('auth.admin')
+->name('empleados.dashboard');
+
+Route::get('/empleados/asignarsolicitud', [EmpleadoController::class, 'indexAsignarSolicitud'])
+->middleware('auth.admin')
+->name('empleados.asignarsolicitud');
 
 // Route::get('/empleados', function () {
 //     return view('empleados.inicio');
@@ -113,6 +142,7 @@ Route::get('/empleados/asignarsolicitud', [EmpleadoController::class, 'indexAsig
 // Route::get('/empleados/motoristas', function () {
 //     return view('empleados.motoristas');
 // })->name('empleados.motoristas');
+
 
 // Route::get('/empleados/solicitudes', function () {
 //     return view('empleados.solicitudes');
@@ -133,12 +163,25 @@ Route::get('/empleados/asignarsolicitud', [EmpleadoController::class, 'indexAsig
     
 -------------*/
 
-Route::get('/talentoHumano', [TalentoHumanoController::class, 'index'])->name('talentoHumano.inicio');
 
-Route::get('/talentoHumano/empleados', [TalentoHumanoController::class, 'indexEmpleados'])->name('talentoHumano.empleados');
+Route::get('/talentoHumano', [TalentoHumanoController::class, 'index'])
+->middleware('guest') //puede acceder sin logearse
+->name('talentoHumano.inicio');
 
-Route::get('/talentoHumano/index', [TalentoHumanoController::class, 'indexInfo'])->name('talentoHumano.index');
+Route::get('/talentoHumano/empleados', [TalentoHumanoController::class, 'indexEmpleados'])
+->middleware('auth.RRHH')
+->name('talentoHumano.empleados');
 
+Route::get('/talentoHumano/index', [TalentoHumanoController::class, 'indexInfo'])
+->middleware('auth.RRHH')
+->name('talentoHumano.index');
+
+Route::post('/talentoHumano/loginRRHH', [AuthEmpleadosController::class, 'inicioRRHH'])
+->name('login.inicioRRHH');
+
+Route::get('/talentoHumano/logoutRRHH', [AuthEmpleadosController::class, 'cerrarSesionRRHH'])
+->middleware('auth.RRHH')
+->name('logout.cerrarRRHH');
 
 // Route::get('/recursosHumanos', function () {
 //     return view('rrhh.inicio');

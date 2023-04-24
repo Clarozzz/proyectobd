@@ -14,4 +14,25 @@ class Empleado extends Model
     public $timestamps = false;
 
     public $primaryKey = 'idEmpleado';
+
+    
+
+    protected $fillable = [
+        'activo',
+        'idContrato',
+        'idSucursal',
+        'idPersona',
+        'idSalario'
+    ];
+
+
+    public function persona()
+    {
+        return $this->belongsTo(User::class,  'idPersona', 'idPersona');
+    }
+
+    public function permisoSistema()
+    {
+        return $this->hasOne(PermisoSistema::class,  'idEmpleado', 'idEmpleado');
+    }
 }
