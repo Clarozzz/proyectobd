@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 -------------*/
 
 
-
+Route::get('/',  [ClienteController::class, 'index']);
 
 
 Route::get('/clientes', [ClienteController::class, 'index'])->name('clientes.inicio');
