@@ -53,8 +53,7 @@ class AuthMotoristaController extends Controller
                     'fechaAlta' => Carbon::now(),
                     'nombreEmpresa' => $request ->nombreEmpresa,
                     'estaActivo' => true,
-
-
+                    'estaHabilitado' => true,
                     'email' => $request ->email,
                     'password' => bcrypt($request ->password)
                 ]

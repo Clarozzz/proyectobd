@@ -33,7 +33,8 @@ class User extends Authenticatable
         'password',
         'fechaAlta',
         'nombreEmpresa',
-        'estaActivo'
+        'estaHabilitado',
+        'activo'
     ];
 
     /**

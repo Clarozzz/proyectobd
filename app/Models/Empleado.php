@@ -18,7 +18,6 @@ class Empleado extends Model
     
 
     protected $fillable = [
-        'activo',
         'idContrato',
         'idSucursal',
         'idPersona',
