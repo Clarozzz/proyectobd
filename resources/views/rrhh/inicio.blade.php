@@ -24,8 +24,9 @@
         <h1 class="text-center texto-grande">Recursos humanos</h1>
         <h3 class="text-center texto-mediano mt-5 mb-4">Iniciar sesion</h3>
 
-        <form action="{{route('talentoHumano.index')}}">
+        <form action="{{route('login.inicioRRHH')}}">
             <div class="d-flex flex-column align-items-center">
+                @csrf
 
                 <div class="col-md-3">
                     <label class="form-label">Email:</label>
