@@ -25,25 +25,27 @@
 
         <div class="d-flex flex-column align-items-center mt-3 mx-4">
 
+            @foreach ($solicitudes as $solicitud)
             <div class="col-3">
                 <div class="card mb-3">
                     <div class="card-body">
                         <h3 class="text-center text-info">Nueva solicitud</h3>
-                        <h6 class="text-center"><strong>Direccion actual:</strong> San goloteas</h6>
-                        <h6 class="text-center"><strong>Destino:</strong> Lago antaras</h6>
-                        <h6 class="text-center"><strong>Fecha:</strong> 28-12-23</h6>
-                        <h6 class="text-center"><strong>Sub total:</strong> 25lps</h6>
-                        <h6 class="text-center"><strong>Impuesto:</strong> 10%</h6>
-                        <h6 class="text-center"><strong>Total:</strong> 27.5</h6>
-                        <h6 class="text-center"><strong>Cliente:</strong> Aquiles Bailo</h6>
-                        <h6 class="text-center"><strong>Telefono:</strong> 8794-5958</h6>
+                        <h6 class="text-center"><strong>Direccion actual:</strong> {{$solicitud->direccionActual}}</h6>
+                        <h6 class="text-center"><strong>Destino:</strong> {{$solicitud->direccionDestino}}</h6>
+                        <h6 class="text-center"><strong>Fecha:</strong> {{$solicitud->fecha}}</h6>
+                        <h6 class="text-center"><strong>Sub total:</strong> {{$solicitud->subTotal}}</h6>
+                        <h6 class="text-center"><strong>Impuesto:</strong> {{$solicitud->valor}}</h6>
+                        <h6 class="text-center"><strong>Total:</strong> {{$solicitud->total}}</h6>
+                        <h6 class="text-center"><strong>Cliente:</strong> {{$solicitud->nombreUsuario}}</h6>
+                        <h6 class="text-center"><strong>Telefono:</strong> {{$solicitud->telefono}}</h6>
 
-                        <form action="{{route('empleados.asignarSolicitud')}}">
+                        <form action="{{route('empleados.asignarSolicitud', $solicitud)}}">
                             <p class="text-center fs-5 px-5 mt-5"><button class="btn btn-success">Aceptar</button></p>
                         </form>
                     </div>
                 </div>
             </div>
+            @endforeach
 
         </div>
     </main>
