@@ -27,7 +27,6 @@ class AuthClienteController extends Controller
                 'rtn' => 'required|string|max:20|unique:persona',
                 'fechaNacimiento' =>'required|date',
                 'email' => 'required|string|email|max:255|unique:persona',
-                'password' => 'required|string|min:8',
             ]
         );
 
@@ -55,7 +54,8 @@ class AuthClienteController extends Controller
                     'estaActivo' => true,
                     'estaHabilitado' => true,
                     'email' => $request ->email,
-                    'password' => bcrypt($request ->password)
+                    'password' => bcrypt($request ->password),
+                    
                 ]
             );
 
@@ -77,6 +77,9 @@ class AuthClienteController extends Controller
                 );
 
             $token = $user->createToken('auth_token')->plainTextToken;
+            $user->remember_token = $token;
+            $user->save();
+
             DB::connection('sqlsrv')->commit();
 
 
@@ -124,6 +127,8 @@ class AuthClienteController extends Controller
                 $user = User::with('cliente')->find($user->idPersona);
                 
                 $token = $user->createToken('auth_token')->plainTextToken;
+                $user->remember_token = $token;
+                $user->save();
                 return response()
             ->json(
                 [

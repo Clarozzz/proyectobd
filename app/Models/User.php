@@ -34,7 +34,8 @@ class User extends Authenticatable
         'fechaAlta',
         'nombreEmpresa',
         'estaHabilitado',
-        'activo'
+        'activo',
+        'remember_token'
     ];
 
     /**
