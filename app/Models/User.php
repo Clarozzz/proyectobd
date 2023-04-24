@@ -33,7 +33,8 @@ class User extends Authenticatable
         'password',
         'fechaAlta',
         'nombreEmpresa',
-        'estaActivo'
+        'estaHabilitado',
+        'activo'
     ];
 
     /**
@@ -55,5 +56,12 @@ class User extends Authenticatable
     {
         return $this->hasOne(Motorista::class, 'idPersona' , 'idPersona');        
     }
+
+
+    public function empleado()
+    {
+        return $this->hasOne(Empleado::class, 'idPersona' , 'idPersona');        
+    }
+ 
  
 }

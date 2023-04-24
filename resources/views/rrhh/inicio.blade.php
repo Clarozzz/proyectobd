@@ -24,8 +24,10 @@
         <h1 class="text-center texto-grande">Recursos humanos</h1>
         <h3 class="text-center texto-mediano mt-5 mb-4">Iniciar sesion</h3>
 
-        <form action="{{route('talentoHumano.index')}}">
+        <form method="POST" action="{{route('login.inicioRRHH')}}">
+            @csrf
             <div class="d-flex flex-column align-items-center">
+                
 
                 <div class="col-md-3">
                     <label class="form-label">Email:</label>
@@ -34,14 +36,24 @@
 
                 <div class="col-md-3">
                     <label class="form-label texto-pequeno">Contrasena:</label>
-                    <input name="contrasena" type="password" class="form-control form-control-lg">
+                    <input name="password" type="password" class="form-control form-control-lg">
                 </div>
                 <span id="aviso" class="mt-3" style="color: red;"></span>
+
+
+                @error('message')
+                <div class="alert alert-danger" role="alert">
+                    {{$message}}
+                </div>
+                @enderror
             </div>
 
 
+            
+
+
             <div class="text-center">
-                <button class="btn btn-dark btn-lg mt-5">Iniciar sesion</button>
+                <button type="submit" class="btn btn-dark btn-lg mt-5">Iniciar sesion</button>
             </div>
         </form>
     </main>
