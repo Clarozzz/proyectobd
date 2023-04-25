@@ -63,7 +63,7 @@ Route::get('/clientes/factura', [ClienteController::class, 'indexFactura'])->nam
 -------------*/
 
 
-Route::get('/motoristas', [MotoristaController::class, 'index'])->name('motoristas.inicio');
+Route::get('/motoristas/inicio', [MotoristaController::class, 'index'])->name('motoristas.inicio');
 
 Route::get('/motoristas/registro', [MotoristaController::class, 'indexRegistro'])->name('motoristas.registro');
 

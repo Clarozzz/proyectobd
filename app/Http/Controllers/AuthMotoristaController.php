@@ -86,7 +86,7 @@ class AuthMotoristaController extends Controller
             DB::connection('sqlsrv')->rollback();
             throw $e;
             
-            return response()->json(['message' => 'Error creando cliente motorista'], 500);
+            return response()->json(['error' => 'Error creando cliente motorista'], 500);
         }
     }
 
@@ -100,7 +100,7 @@ class AuthMotoristaController extends Controller
             if($user->motorista == null){//no esta relacionado a un motorista
                 
                 return response()
-                   ->json(['message' => 'No autorizado motorista'], 401);
+                   ->json(['error' => 'No autorizado motorista'], 401);
             } 
 
 
@@ -129,14 +129,14 @@ class AuthMotoristaController extends Controller
             );
             } else {
                 return response()
-           ->json(['message' => 'fallo interno'], 401);
+           ->json(['error' => 'fallo interno'], 401);
             }
           
         }
         
 
             return response()
-           ->json(['message' => 'No autorizado'], 401);
+           ->json(['error' => 'No autorizado'], 401);
         
     }
 
@@ -158,7 +158,7 @@ class AuthMotoristaController extends Controller
 
         } else {
             return response()
-       ->json(['message' => 'fallo interno'], 401);
+       ->json(['error' => 'fallo interno'], 401);
         }
         
         

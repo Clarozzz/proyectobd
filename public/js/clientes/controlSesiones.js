@@ -1,4 +1,4 @@
-var ip = http://127.0.0.1:8000;
+var ip = 'http://127.0.0.1:8000';
 var url = '/api/cliente/verificar';
 function validarSesion(token){
 

@@ -29,23 +29,30 @@
     <main id="apartado-inicio-sesion">
         <h1 class="text-center mt-5">Iniciar sesion</h1>
 
-        <form action="{{route('motoristas.solicitud')}}" class="px-5 mt-4">
+        <div class="px-5 mt-4">
             <label class="form-label">Email:</label>
-            <input type="text" name="email" class="form-control form-control-lg">
+            <input type="text" id="email" class="form-control form-control-lg">
 
             <label class="form-label mt-3">Contrasena:</label>
-            <input type="password" name="contrasena" class="form-control form-control-lg mb-3">
+            <input type="password" id="password" class="form-control form-control-lg mb-3">
 
             <div class="text-center">
-                <button class="btn btn-danger mt-4 btn-lg">Iniciar sesion</button>
+                <button onclick="login()" class="btn btn-danger mt-4 btn-lg">Iniciar sesion</button>
             </div>
-        </form>
+        </div>
+
+
+        <p  id="error" >
+            
+        </p>
 
         <form action="{{route('motoristas.registro')}}">
             <p class="text-center fs-5 px-5 mt-5">¿No tienes una cuenta? <button class="btn btn-link">Registrate</button></p>
         </form>
 
     </main>
+
+    <script src="{{ asset('js/motoristas/inicio.js') }}"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>

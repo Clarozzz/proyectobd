@@ -69,7 +69,7 @@ Route::middleware('auth:sanctum')->get('motorista/verificar', function (Request 
     }
 
     return response()
-    ->json(['message' => 'No es un cliente'], 401);
+    ->json(['message' => 'No es un motorista'], 401);
     
 });
 
