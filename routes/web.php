@@ -71,22 +71,7 @@ Route::get('/motoristas/espera', [MotoristaController::class, 'indexEspera'])->n
 
 Route::get('/motoristas/solicitud', [MotoristaController::class, 'indexSolicitud'])->name('motoristas.solicitud');
 
-// Route::get('/motoristas', function () {
-//     return view('motoristas.inicio');
-// })->name('motoristas.inicio');
-
-// Route::get('/motoristas/registro', function () {
-//     return view('motoristas.registro');
-// })->name('motoristas.registro');
-
-
-// Route::get('/motoristas/espera', function () {
-//     return view('motoristas.espera');
-// })->name('motoristas.espera');
-
-// Route::get('/motoristas/solicitud', function () {
-//     return view('motoristas.solicitud');
-// })->name('motoristas.solicitud');
+Route::get('/motoristas/{solicitud}', [MotoristaController::class, 'factura'])->name('motoristas.factura');
 
 
 /*------------- 
@@ -129,31 +114,6 @@ Route::get('/empleados/dashboard', [EmpleadoController::class, 'indexDashboard']
 Route::get('/empleados/asignarsolicitud', [EmpleadoController::class, 'indexAsignarSolicitud'])
 ->middleware('auth.admin')
 ->name('empleados.asignarsolicitud');
-
-// Route::get('/empleados', function () {
-//     return view('empleados.inicio');
-// })->name('empleados.inicio');
-
-// Route::get('/empleados/index', function () {
-//     return view('empleados.index');
-// })->name('empleados.index');
-
-// Route::get('/empleados/motoristas', function () {
-//     return view('empleados.motoristas');
-// })->name('empleados.motoristas');
-
-
-// Route::get('/empleados/solicitudes', function () {
-//     return view('empleados.solicitudes');
-// })->name('empleados.solicitudes');
-
-// Route::get('/empleados/clientes', function () {
-//     return view('empleados.clientes');
-// })->name('empleados.clientes');
-
-// Route::get('/empleados/asignarSolicitud', function () {
-//     return view('empleados.asignarsolicitud');
-// })->name('empleados.asignarSolicitud');
 
 
 /*------------- 

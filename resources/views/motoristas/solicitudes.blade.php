@@ -40,7 +40,7 @@
                         <h6 class="text-center"><strong>Telefono:</strong> {{$solicitud->telefono}}</h6>
 
                         <!-- Aceptar te debe llevar a la vista de factura -->
-                        <form action="#">
+                        <form action="{{route('motoristas.factura', $solicitud)}}">
                             <p class="text-center fs-5 px-5 mt-5"><button class="btn btn-success">Aceptar</button></p>
                         </form>
                     </div>

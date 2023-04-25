@@ -49,7 +49,7 @@
                         <th scope="row">{{$empleado->idEmpleado}}</th>
                         <td>{{$empleado->primerNombre}}</td>
                         <td>{{$empleado->primerApellido}}</td>
-                        <td>{{$cliente->dni}}</td>
+                        <td>{{$empleado->dni}}</td>
                         <td>{{$empleado->idSucursal}}</td>
                         <td>{{$empleado->fechaInicio}}</td>
                         <td>{{$empleado->salario}}</td>
