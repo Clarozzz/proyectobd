@@ -83,35 +83,17 @@
         </form>
     </div>
     <!-- Fin del contenedor -->
-    <!-- Script para la funcion de mostrar el mapa -->
-    <script>
-        function initMap() {
-            var myLatLng = {
-                lat: 15.199999,
-                lng: -86.241905
-            };
-            var mapOptions = {
-                center: myLatLng,
-                restriction: {
-                    latLngBounds: myLatLng,
-                    strictBounds: false,
-                },
-                zoom: 8,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
-
-            //Creamos el mapa
-            var map = new google.maps.Map(document.getElementById('googleMap'), mapOptions);
-        }
-    </script>
 
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+
+
+    <!-- Script necesarios para el mapa -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBr406V0o5DTqMW6cHqUErqcpaWMr4w3gM&libraries=places"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
 
-    <script src="{{asset ('js/mapa.js')}}"></script>
+    <script src="{{ asset ('js/mapa.js')}}"></script>
 </body>
 
 </html>
