@@ -29,7 +29,9 @@
     <main id="apartado-inicio-sesion">
         <h1 class="text-center mt-5">Registrarse</h1>
 
-        <form action="#" class="px-5 mt-4">
+        <form action="{{route('clientes.store')}}" class="px-5 mt-4" method="post">
+            @csrf
+
             <label class="form-label">Primer nombre:</label>
             <input type="text" name="primerNombre" class="form-control form-control-lg mb-3">
 
@@ -65,7 +67,7 @@
             <input type="text" name="nombreEmpresa" class="form-control form-control-lg mb-3" placeholder="(Opcional)">
             
             <label class="form-label">Contrasena:</label>
-            <input type="password" name="contrasena" class="form-control form-control-lg mb-3">
+            <input type="password" name="password" class="form-control form-control-lg mb-3">
 
             <div class="text-center">
                 <button class="btn btn-danger mt-4">Registrarse</button>

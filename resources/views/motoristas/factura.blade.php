@@ -40,18 +40,19 @@
         <h6 class="text-center"><strong>CAI:</strong> {{$empresa->cai}}</h6>
         <h6 class="text-center"><strong>Caja:</strong> {{$cajaDigital->numeroCaja}}</h6>
         <h6 class="text-center"><strong>Nro. factura:</strong> {{$factura->numFactura}}</h6>
-        <h6 class="text-center"><strong>Fecha limite:</strong> {{$sar->fechaLImite}}</h6>
+        <h6 class="text-center"><strong>Fecha limite:</strong> {{$sar->fechaLimite}}</h6>
         <h6 class="text-center"><strong>Nro. inicial:</strong> {{$sar->inicioRango}}</h6>
         <h6 class="text-center"><strong>Nro. final:</strong> {{$sar->finalRango}}</h6>
         <h6 class="text-center">-------------------------------</h6>
 
         <h6 class="text-center"><strong>Fecha:</strong> {{$factura->fecha}}</h6>
+        <h6 class="text-center"><strong>Motorista:</strong> {{$solicitud->primerNombre}} {{$solicitud->primerApellido}}</h6>
         <h6 class="text-center"><strong>sub total:</strong> {{$solicitud->subTotal}}</h6>
         <h6 class="text-center"><strong>impuesto:</strong> {{$solicitud->valor}}</h6>
         <h6 class="text-center"><strong>total:</strong> {{$solicitud->total}}</h6>
 
-        <form action="{{route('clientes.solicitud')}}">
-            <p class="text-center fs-5 px-5 mt-5"><button class="btn btn-success">Aceptar</button></p>
+        <form action="#">
+            <p class="text-center fs-5 px-5 mt-5"><button class="btn btn-success">Finalizar</button></p>
         </form>
 
     </main>

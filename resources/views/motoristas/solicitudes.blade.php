@@ -11,7 +11,7 @@
 
 <body class="bg-body-tertiary">
 
-    <nav id="navbar-inicio" class="navbar sticky-top bg-primary text-white">
+    <nav id="navbar-inicio" class="navbar sticky-top bg-danger text-white">
         <div class="container justify-content-center">
             <div class="d-flex">
                 <img src="{{URL('images/logo.png')}}" alt="Logo" height="55" class="d-inline-block align-text-top">
@@ -23,31 +23,34 @@
     <main id="paginaPrincipal" class="my-5">
         <h1 class="text-center mb-5">Solicitudes</h1>
 
+        @foreach ($solicitudes as $solicitud)
         <div class="d-flex flex-column align-items-center mt-3 mx-4">
 
-            @foreach ($solicitudes as $solicitud)
-            <div class="col-3">
+            <div>
                 <div class="card mb-3">
                     <div class="card-body">
                         <h3 class="text-center text-info">Nueva solicitud</h3>
                         <h6 class="text-center"><strong>Direccion actual:</strong> {{$solicitud->direccionActual}}</h6>
                         <h6 class="text-center"><strong>Destino:</strong> {{$solicitud->direccionDestino}}</h6>
                         <h6 class="text-center"><strong>Fecha:</strong> {{$solicitud->fecha}}</h6>
-                        <h6 class="text-center"><strong>Sub total:</strong> {{$solicitud->subTotal}}</h6>
-                        <h6 class="text-center"><strong>Impuesto:</strong> {{$solicitud->valor}}</h6>
-                        <h6 class="text-center"><strong>Total:</strong> {{$solicitud->total}}</h6>
+                        <h6 class="text-center"><strong>Sub total:</strong> {{$solicitud->subTotal}}lps</h6>
+                        <h6 class="text-center"><strong>Impuesto:</strong> {{$solicitud->valor}}%</h6>
+                        <h6 class="text-center"><strong>Total:</strong> {{$solicitud->total}}lps</h6>
                         <h6 class="text-center"><strong>Cliente:</strong> {{$solicitud->nombreUsuario}}</h6>
                         <h6 class="text-center"><strong>Telefono:</strong> {{$solicitud->telefono}}</h6>
 
-                        <form action="{{route('empleados.asignarsolicitud', $solicitud)}}">
+                        <!-- Aceptar te debe llevar a la vista de factura -->
+                        <form action="{{route('motoristas.factura', $solicitud)}}">
                             <p class="text-center fs-5 px-5 mt-5"><button class="btn btn-success">Aceptar</button></p>
                         </form>
                     </div>
                 </div>
             </div>
-            @endforeach
 
         </div>
+        @endforeach
+
+
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
