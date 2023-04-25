@@ -40,7 +40,7 @@
         <h6 class="text-center"><strong>CAI:</strong> {{$empresa->cai}}</h6>
         <h6 class="text-center"><strong>Caja:</strong> {{$cajaDigital->numeroCaja}}</h6>
         <h6 class="text-center"><strong>Nro. factura:</strong> {{$factura->numFactura}}</h6>
-        <h6 class="text-center"><strong>Fecha limite:</strong> {{$sar->fechaLImite}}</h6>
+        <h6 class="text-center"><strong>Fecha limite:</strong> {{$sar->fechaLimite}}</h6>
         <h6 class="text-center"><strong>Nro. inicial:</strong> {{$sar->inicioRango}}</h6>
         <h6 class="text-center"><strong>Nro. final:</strong> {{$sar->finalRango}}</h6>
         <h6 class="text-center">-------------------------------</h6>

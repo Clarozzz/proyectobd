@@ -3,12 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\CajaDigital;
+use App\Models\Color;
 use App\Models\Empresa;
 use App\Models\Factura;
 use App\Models\Motorista;
 use App\Models\Sar;
 use App\Models\Solicitud;
 use App\Models\Sucursal;
+use App\Models\User;
+use App\Models\Vehiculo;
+use App\Models\VehiculoColor;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class MotoristaController extends Controller
@@ -23,7 +28,8 @@ class MotoristaController extends Controller
 
     public function indexRegistro()
     {
-        return view('motoristas.registro');
+        $colores = Color::all();
+        return view('motoristas.registro', compact('colores'));
     }
 
     public function indexSolicitud()
@@ -72,7 +78,55 @@ class MotoristaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $vehiculo = new Vehiculo();
+        $vehiculo->numeroPlaca = $request->numeroPlaca;
+        $vehiculo->tipo = $request->tipo;
+        $vehiculo->anio = $request->anio;
+        $vehiculo->marca = $request->marca;
+        $vehiculo->permisoExplitacion = $request->permisoExplotacion;
+        $vehiculo->foto = $request->foto;
+
+        $vehiculo->save();
+
+        $auto = Vehiculo::select('idVehiculo')
+            ->where('numeroPlaca', '=', $vehiculo->numeroPlaca)
+            ->get();
+
+        $vehiculoColor = new VehiculoColor();
+        $vehiculoColor->idVehiculo = $auto[0]->idVehiculo;
+        $vehiculoColor->idColor = $request->color;
+        $vehiculoColor->save();
+
+        $user = new User();
+        $user->primerNombre = $request->primerNombre;
+        $user->primerApellido = $request->primerApellido;
+        $user->segundoNombre = $request->segundoNombre;
+        $user->segundoApellido = $request->segundoApellido;
+        $user->telefono = $request->telefono;
+        $user->dni = $request->dni;
+        $user->rtn = $request->rtn;
+        $user->fechaNacimiento = $request->fechaNacimiento;
+        $user->email = $request->email;
+        $user->password = $request->contrasena;
+        $user->fechaAlta = Carbon::now();
+        $user->nombreEmpresa = $request->nombreEmpresa;
+        $user->estaHabilitado = true;
+
+        $user->save();
+
+        $id = User::select('idPersona')
+            ->where('dni', '=', $user->dni)
+            ->get();
+
+        $motorista = new Motorista();
+        $motorista->cuentaBancaria = $request->cuentaBancaria;
+        $motorista->nombreBanco = $request->nombreBanco;
+        $motorista->idPersona = $id[0]->idPersona;
+
+        $motorista->save();
+
+        return redirect()->route('motoristas.espera');
     }
 
     /**
