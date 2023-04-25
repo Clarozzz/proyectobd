@@ -30,7 +30,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/clientes', [ClienteController::class, 'index'])->name('clientes.inicio');
+Route::get('/clientes/inicio', [ClienteController::class, 'index'])->name('clientes.inicio');
 
 Route::get('/clientes/registro', [ClienteController::class, 'indexRegistro'])->name('clientes.registro');
 

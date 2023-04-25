@@ -124,7 +124,8 @@ class AuthMotoristaController extends Controller
                     'accessToken' => $token,
                     'token_type' => 'Bearer',
                     'user' => $user
-                ]
+                ],
+                200
             );
             } else {
                 return response()

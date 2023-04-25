@@ -1,8 +1,60 @@
+
 console.log('registro funcionando')
 
 
+var token = localStorage.getItem('token');
+var datosCliente = '';
+
+validarSesion()
 
 
+
+
+
+
+function validarSesion(){
+
+    console.log(token)
+    if(token != null){
+        validarCliente()
+    }
+
+    
+}
+
+
+function validarCliente(){
+
+    fetch('http://127.0.0.1:8000/api/cliente/verificar', {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer ' + token
+  }
+})
+  .then(response => {
+    if (!response.ok) {
+      console.log('No es tiene permisos');
+      localStorage.removeItem("token");
+    
+
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log('es cliente')
+    console.log(data);
+    datosCliente = data;
+    window.location.replace('solicitud');
+    
+    
+  })
+  .catch(error => {
+    console.error('There was a problem with the fetch operation:', error);
+  });
+
+}
 
 function registrarse(){
     
@@ -23,11 +75,13 @@ datosCliente =
         password : document.getElementById('password').value,
     } 
 
+    console.log(datosCliente)
+
    enviarCredenciales(datosCliente)
 
     //console.log(datosCliente)
 
-
+    
 
     
 
@@ -37,9 +91,7 @@ datosCliente =
 
 function enviarCredenciales(datosCliente){
 
-    //const url = "http://127.0.0.1:8000/api/cliente/registro";
-   // const csrfToken = document.head.querySelector("[name~=csrf-token][content]").content;
-   const url = "http://127.0.0.1:8000/api/cliente/registro";
+    const url = "http://127.0.0.1:8000/api/cliente/registro";
 
    
    fetch(url, {
@@ -52,15 +104,23 @@ function enviarCredenciales(datosCliente){
    })
    .then(response => response.json())   
    .then(data => {
-    console.log(data)
-    
+    console.log('console data ' + (data.errors == null))
+    if(data.errors == null){
 
-    localStorage.setItem('token', data.access_token);
-    window.location.replace('factura');
+        localStorage.setItem('token', data.access_token);
+        //console.log(data) 
+        window.location.replace('solicitud');
+        
+    }
+        
+    throw new Error('Credenciales invalidas');
+    
+   
     })
    .catch(error => {
     
     console.log(error);
+    
     
 
    });
@@ -71,3 +131,10 @@ function enviarCredenciales(datosCliente){
    
 }
 
+
+function irUsuarios(){
+
+    window.location.replace('factura')
+
+
+}
