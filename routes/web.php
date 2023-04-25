@@ -38,6 +38,8 @@ Route::get('/clientes/solicitud', [ClienteController::class, 'indexSolicitud'])-
 
 Route::get('/clientes/factura', [ClienteController::class, 'indexFactura'])->name('clientes.factura');
 
+Route::post('/clientes', [ClienteController::class, 'store'])->name('clientes.store');
+
 // Route::get('/clientes', function () {
 //    return view('clientes.inicio');
 // })->name('clientes.inicio');

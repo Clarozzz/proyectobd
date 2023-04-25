@@ -26,7 +26,7 @@
         @foreach ($solicitudes as $solicitud)
         <div class="d-flex flex-column align-items-center mt-3 mx-4">
 
-            <div class="col-3">
+            <div>
                 <div class="card mb-3">
                     <div class="card-body">
                         <h3 class="text-center text-info">Nueva solicitud</h3>

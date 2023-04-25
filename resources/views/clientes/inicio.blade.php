@@ -29,7 +29,7 @@
     <main id="apartado-inicio-sesion">
         <h1 class="text-center mt-5">Iniciar sesion</h1>
 
-        <form action="#" class="px-5 mt-4">
+        <form action="{{route('clientes.solicitud')}}" class="px-5 mt-4">
             <label class="form-label">Email:</label>
             <input type="text" name="email" class="form-control form-control-lg">
 
