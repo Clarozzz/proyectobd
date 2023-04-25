@@ -40,23 +40,6 @@ Route::get('/clientes/factura', [ClienteController::class, 'indexFactura'])->nam
 
 Route::post('/clientes', [ClienteController::class, 'store'])->name('clientes.store');
 
-// Route::get('/clientes', function () {
-//    return view('clientes.inicio');
-// })->name('clientes.inicio');
-
-// Route::get('/clientes/registro', function () {
-//     return view('clientes.registro');
-// })->name('clientes.registro');
-
-// Route::get('/clientes/solicitud', function () {
-//     return view('clientes.solicitud');
-// })->name('clientes.solicitud');
-
-// Route::get('/clientes/factura', function () {
-//     return view('clientes.factura');
-// })->name('clientes.factura');
-
-
 
 /*------------- 
 
@@ -74,6 +57,8 @@ Route::get('/motoristas/espera', [MotoristaController::class, 'indexEspera'])->n
 Route::get('/motoristas/solicitud', [MotoristaController::class, 'indexSolicitud'])->name('motoristas.solicitud');
 
 Route::get('/motoristas/{solicitud}', [MotoristaController::class, 'factura'])->name('motoristas.factura');
+
+Route::post('/motoristas', [MotoristaController::class, 'store'])->name('motoristas.store');
 
 
 /*------------- 
@@ -143,15 +128,3 @@ Route::post('/talentoHumano/loginRRHH', [AuthEmpleadosController::class, 'inicio
 Route::get('/talentoHumano/logoutRRHH', [AuthEmpleadosController::class, 'cerrarSesionRRHH'])
 ->middleware('auth.RRHH')
 ->name('logout.cerrarRRHH');
-
-// Route::get('/recursosHumanos', function () {
-//     return view('rrhh.inicio');
-// })->name('recursosHumanos.inicio');
-
-// Route::get('/recursosHumanos/index', function () {
-//     return view('rrhh.index');
-// })->name('recursosHumanos.index');
-
-// Route::get('/recursosHumanos/empleados', function () {
-//     return view('rrhh.empleados');
-// })->name('recursosHumanos.empleados');
