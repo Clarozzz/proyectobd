@@ -1,8 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Cliente;
 
+use App\Models\CajaDigital;
+use App\Models\Cliente;
+use App\Models\Empresa;
+use App\Models\Factura;
+use App\Models\Sar;
+use App\Models\Solicitud;
+use App\Models\Sucursal;
+use App\Models\User;
+use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
@@ -27,7 +35,19 @@ class ClienteController extends Controller
 
     public function indexFactura()
     {
-        return view('clientes.factura');
+        $empresa = Empresa::find(1);
+        $sucursal = Sucursal::find(1);
+        $cajaDigital = CajaDigital::find(1);
+        $factura = Factura::find(3);
+        $sar = Sar::find(4);
+        $solicitud = Solicitud::select()
+            ->join('cliente', 'cliente.idCliente', '=', 'solicitud.idCliente')
+            ->join('valorImpuesto', 'valorImpuesto.idImpuesto', '=', 'solicitud.idImpuesto')
+            ->join('persona', 'persona.idPersona', '=', 'cliente.idPersona')
+            ->where('solicitud.idSolicitud', 3)
+            ->get();
+        $solicitud = $solicitud[0];
+        return view('clientes.factura', compact('empresa', 'sucursal', 'cajaDigital', 'factura', 'sar', 'solicitud'));
     }
 
     /**
@@ -35,7 +55,7 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -43,7 +63,36 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User();
+        $user->primerNombre = $request->primerNombre;
+        $user->primerApellido = $request->primerApellido;
+        $user->segundoNombre = $request->segundoNombre;
+        $user->segundoApellido = $request->segundoApellido;
+        $user->telefono = $request->telefono;
+        $user->dni = $request->dni;
+        $user->rtn = $request->rtn;
+        $user->fechaNacimiento = $request->fechaNacimiento;
+        $user->email = $request->email;
+        $user->password = $request->contrasena;
+        $user->fechaAlta = Carbon::now();
+        $user->nombreEmpresa = $request->nombreEmpresa;
+        $user->estaHabilitado = true;
+
+        $user->save();
+
+        $id = User::select('idPersona')
+            ->where('dni', '=', $user->dni)
+            ->get();
+
+
+        $cliente = new Cliente();
+        $cliente->nombreUsuario = $request->nombreUsuario;
+        $cliente->esExonerado = false;
+        $cliente->idPersona = $id[0]->idPersona;
+
+        $cliente->save();
+
+        return redirect()->route('clientes.inicio');
     }
 
     /**

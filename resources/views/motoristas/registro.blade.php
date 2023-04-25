@@ -29,7 +29,9 @@
     <main id="apartado-inicio-sesion">
         <h1 class="text-center mt-5">Registrarse</h1>
 
-        <form action="{{route('motoristas.espera')}}" class="px-5 mt-4">
+        <form action="{{route('motoristas.espera')}}" class="px-5 mt-4" method="post">
+            @csrf
+
             <label class="form-label">Primer nombre:</label>
             <input type="text" name="primerNombre" class="form-control form-control-lg mb-3">
 
