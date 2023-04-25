@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cliente;
 use App\Models\Empleado;
+use App\Models\Motorista;
+use App\Models\Solicitud;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class EmpleadoController extends Controller
@@ -17,12 +21,20 @@ class EmpleadoController extends Controller
 
     public function indexClientes()
     {
-        return view('empleados.clientes');
+        $clientes = User::select()
+            ->join('cliente', 'cliente.idPersona', '=', 'persona.idPersona')
+            ->get();
+        return view('empleados.clientes', compact('clientes'));
     }
 
     public function indexSolicitudes()
     {
-        return view('empleados.solicitudes');
+        $solicitudes = Solicitud::select()
+            ->join('cliente', 'cliente.idCliente', '=', 'solicitud.idCliente')
+            ->join('valorImpuesto', 'valorImpuesto.idImpuesto', '=', 'solicitud.idImpuesto')
+            ->join('persona', 'persona.idPersona', '=', 'cliente.idPersona')
+            ->get();
+        return view('empleados.solicitudes', compact('solicitudes'));
     }
 
     public function indexDashboard()
@@ -32,12 +44,20 @@ class EmpleadoController extends Controller
 
     public function indexMotoristas()
     {
-        return view('empleados.motoristas');
+        $motoristas = Motorista::select()
+            ->join('persona', 'motorista.idPersona', '=', 'persona.idPersona')
+            ->get()
+            ->where('persona.estaHabilitado', false);
+        return view('empleados.motoristas', compact('motoristas'));
     }
 
     public function indexAsignarSolicitud()
     {
-        return view('empleados.asignarsolicitud');
+        $motoristas = Motorista::select()
+            ->join('persona', 'motorista.idPersona', '=', 'persona.idPersona')
+            ->get()
+            ->where('persona.estaHabilitado', true);
+        return view('empleados.asignarsolicitud', compact('motoristas'));
     }
 
     /**

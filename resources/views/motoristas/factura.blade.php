@@ -46,9 +46,9 @@
         <h6 class="text-center">-------------------------------</h6>
 
         <h6 class="text-center"><strong>Fecha:</strong> {{$factura->fecha}}</h6>
-        <h6 class="text-center"><strong>Motorista:</strong> {{$persona->primerNombre}} {{$persona->primerApellido}}</h6>
+        <h6 class="text-center"><strong>Motorista:</strong> {{$solicitud->primerNombre}} {{$solicitud->primerApellido}}</h6>
         <h6 class="text-center"><strong>sub total:</strong> {{$solicitud->subTotal}}</h6>
-        <h6 class="text-center"><strong>impuesto:</strong> {{$valorImpuesto->valor}}</h6>
+        <h6 class="text-center"><strong>impuesto:</strong> {{$solicitud->valor}}</h6>
         <h6 class="text-center"><strong>total:</strong> {{$solicitud->total}}</h6>
 
         <form action="#">

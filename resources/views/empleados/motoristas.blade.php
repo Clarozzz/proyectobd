@@ -24,7 +24,7 @@
         <h1 class="text-center mb-5">Motoristas</h1>
 
         <div class="d-flex flex-column align-items-center mt-3 mx-4">
-            @foreach ($motorista as $motorista)
+            @foreach ($motoristas as $motorista)
             <div class="col-3">
                 <div class="card mb-3">
                     <div class="card-body">

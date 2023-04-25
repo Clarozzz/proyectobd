@@ -39,7 +39,7 @@
                         <h6 class="text-center"><strong>Cliente:</strong> {{$solicitud->nombreUsuario}}</h6>
                         <h6 class="text-center"><strong>Telefono:</strong> {{$solicitud->telefono}}</h6>
 
-                        <form action="{{route('empleados.asignarSolicitud', $solicitud)}}">
+                        <form action="{{route('empleados.asignarsolicitud', $solicitud)}}">
                             <p class="text-center fs-5 px-5 mt-5"><button class="btn btn-success">Aceptar</button></p>
                         </form>
                     </div>

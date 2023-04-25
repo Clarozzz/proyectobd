@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Empleado;
 use App\Models\TalentoHumano;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,10 @@ class TalentoHumanoController extends Controller
 
     public function indexEmpleados()
     {
-        return view('rrhh.empleados');
+        $empleados = Empleado::select()
+            ->join('persona', 'empleados.idPersona', '=', 'persona.idPersona')
+            ->get();
+        return view('rrhh.empleados', compact('empleados'));
     }
 
     public function indexInfo()
