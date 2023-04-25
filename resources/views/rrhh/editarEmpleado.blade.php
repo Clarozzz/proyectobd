@@ -57,7 +57,9 @@
             <input type="text" name="tipoEmpleado" class="form-control form-control-lg mb-3" value="{{$empleado->tipoEmpleado}}">
 
             <div class="text-center">
+
                 <button type="submit" class="btn btn-danger mt-4">Guardar</button>
+
             </div>
         </form>
 

@@ -24,19 +24,19 @@
         <h1 class="text-center mb-5">Motoristas</h1>
 
         <div class="d-flex flex-column align-items-center mt-3 mx-4">
-
+            @foreach ($motoristas as $motorista)
             <div class="col-3">
                 <div class="card mb-3">
                     <div class="card-body">
                         <h3 class="text-center text-info">Nuevo motorista</h3>
-                        <h6 class="text-center"><strong>Nombre:</strong> San</h6>
-                        <h6 class="text-center"><strong>Apellido:</strong> goloteas</h6>
-                        <h6 class="text-center"><strong>Email:</strong> sango@gmail.com</h6>
-                        <h6 class="text-center"><strong>Telefono:</strong> 9887-5465</h6>
-                        <h6 class="text-center"><strong>DNI:</strong> 0801-1995-12358</h6>
-                        <h6 class="text-center"><strong>RTN:</strong> 0801-1995-123589</h6>
-                        <h6 class="text-center"><strong>Fecha de nacimiento:</strong> 12-05-1995</h6>
-                        <h6 class="text-center"><strong>Nombre de la empresa:</strong> null</h6>
+                        <h6 class="text-center"><strong>Nombre:</strong> {{$motorista->primerNombre}}</h6>
+                        <h6 class="text-center"><strong>Apellido:</strong> {{$motorista->primerApellido}}</h6>
+                        <h6 class="text-center"><strong>Email:</strong> {{$motorista->email}}</h6>
+                        <h6 class="text-center"><strong>Telefono:</strong> {{$motorista->telefono}}</h6>
+                        <h6 class="text-center"><strong>DNI:</strong> {{$motorista->dni}}</h6>
+                        <h6 class="text-center"><strong>RTN:</strong> {{$motorista->rtn}}</h6>
+                        <h6 class="text-center"><strong>Fecha de nacimiento:</strong> {{$motorista->fechaNacimiento}}</h6>
+                        <h6 class="text-center"><strong>Nombre de la empresa:</strong> {{$motorista->nombreEmpresa}}</h6>
                         <div class="row mt-5">
                             <div class="col">
                                 <form action="#">
@@ -52,6 +52,7 @@
                     </div>
                 </div>
             </div>
+            @endforeach
 
         </div>
     </main>
