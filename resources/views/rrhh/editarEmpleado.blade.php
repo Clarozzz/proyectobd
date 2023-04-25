@@ -29,7 +29,12 @@
     <main id="apartado-inicio-sesion">
         <h1 class="text-center mt-5">Editar empleado</h1>
 
-        <form action="#" class="px-5 mt-4">
+        <form action="{{route('empleados.update', $empleado->idEmpleado)}}"   method="POST" class="px-5 mt-4">
+            @csrf
+            @method('PUT')
+            <label class="form-label">Codigo Empleado:</label>
+            <input type="text" name="idEmpleado" class="form-control form-control-lg mb-3" value="{{$empleado->idEmpleado}}" disabled>
+           
             <label class="form-label">Primer nombre:</label>
             <input type="text" name="primerNombre" class="form-control form-control-lg mb-3" value="{{$empleado->primerNombre}}" disabled>
 
@@ -52,7 +57,7 @@
             <input type="text" name="tipoEmpleado" class="form-control form-control-lg mb-3" value="{{$empleado->tipoEmpleado}}">
 
             <div class="text-center">
-                <button class="btn btn-danger mt-4">Guardar</button>
+                <button type="submit" class="btn btn-danger mt-4">Guardar</button>
             </div>
         </form>
 
