@@ -14,4 +14,9 @@ class Vehiculo extends Model
     public $timestamps = false;
 
     public $primaryKey = 'idVehiculo';
+
+    public function motoristas(){
+        return $this->belongsToMany('App\Models\Motorista');
+
+    }
 }
