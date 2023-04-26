@@ -1,21 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-<<<<<<< HEAD
 
-use App\Models\CajaDigital;
-use App\Models\Cliente;
-use App\Models\Empresa;
-use App\Models\Factura;
-use App\Models\Sar;
-use App\Models\Solicitud;
-use App\Models\Sucursal;
-use App\Models\User;
-use Illuminate\Support\Carbon;
-=======
 use App\Models\Cliente;
 
->>>>>>> 9462b6a057781d6e715543a7dbd7b36913a36cc4
+
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
