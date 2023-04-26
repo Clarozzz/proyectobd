@@ -47,10 +47,10 @@
 
         <h6 class="text-center"><strong>Fecha:</strong> {{$factura->fecha}}</h6>
         <h6 class="text-center"><strong>sub total:</strong> {{$solicitud->subTotal}}</h6>
-        <h6 class="text-center"><strong>impuesto:</strong> {{$solicitud->valor}}</h6>
+        <h6 class="text-center"><strong>impuesto:</strong> {{$valorImpuesto->valor}}</h6>
         <h6 class="text-center"><strong>total:</strong> {{$solicitud->total}}</h6>
 
-        <form action="{{route('clientes.solicitud')}}">
+        <form action="#">
             <p class="text-center fs-5 px-5 mt-5"><button class="btn btn-success">Aceptar</button></p>
         </form>
 

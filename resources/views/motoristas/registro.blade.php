@@ -29,9 +29,7 @@
     <main id="apartado-inicio-sesion">
         <h1 class="text-center mt-5">Registrarse</h1>
 
-        <form action="{{route('motoristas.store')}}" class="px-5 mt-4" method="post">
-            @csrf
-
+        <form action="{{route('motoristas.espera')}}" class="px-5 mt-4">
             <label class="form-label">Primer nombre:</label>
             <input type="text" name="primerNombre" class="form-control form-control-lg mb-3">
 
@@ -62,9 +60,6 @@
             <label class="form-label">Cuenta bancaria:</label>
             <input type="text" name="cuentaBancaria" class="form-control form-control-lg mb-3">
 
-            <label class="form-label">Nombre del banco:</label>
-            <input type="text" name="nombreBanco" class="form-control form-control-lg mb-3">
-
             <label class="form-label">Contrasena:</label>
             <input type="password" name="contrasena" class="form-control form-control-lg mb-3">
             
@@ -79,21 +74,14 @@
             <label class="form-label">Anio del vehiculo:</label>
             <input type="number" min="1900" max="2099" name="anio" class="form-control form-control-lg mb-3">
 
-            <label class="form-label">Foto del vehiculo:</label>
-            <input type="text" name="foto" class="form-control form-control-lg mb-3">
-
             <label class="form-label">Marca del vehiculo:</label>
             <input type="text" name="marca" class="form-control form-control-lg mb-3">
 
             <label class="form-label">Permiso explotacion del vehiculo:</label>
-            <input type="text" name="permisoExplotacion" class="form-control form-control-lg mb-3">
+            <input type="text" name="permisoExplitacion" class="form-control form-control-lg mb-3">
 
             <label class="form-label">Color del vehiculo:</label>
-            <select class="form-select" name="color">
-                @foreach ($colores as $color)
-                    <option value="{{$color->idColor}}">{{$color->color}}</option>
-                @endforeach
-            </select>
+            <input type="text" name="color" class="form-control form-control-lg mb-3">
 
             <div class="text-center">
                 <button class="btn btn-danger btn-lg mt-4">Registrarse</button>

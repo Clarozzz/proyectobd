@@ -1,17 +1,4 @@
 ﻿//Establecer opciones de mapa
-var myLatLng = { lat: 15.199999, lng: -86.241905};
-var mapOptions = {
-center: myLatLng,
-restriction: {
-    latLngBounds: myLatLng,
-    strictBounds: false,
-},
-zoom: 8,
-mapTypeId: google.maps.MapTypeId.ROADMAP
-};
-
-//Creamos el mapa
-const map = new google.maps.Map(document.getElementById('googleMap'), mapOptions);
 
 
 
@@ -27,34 +14,34 @@ directionsDisplay.setMap(map);
 
 //definimos la funcion de calcular ruta
 function calcRoute() {
-//Creamos la solicitud
-var request = {
-    origin: document.getElementById("from").value,
-    destination: document.getElementById("to").value,
-    travelMode: google.maps.TravelMode.DRIVING, //WALKING, BYCYCLING, TRANSIT
-    unitSystem: google.maps.UnitSystem.IMPERIAL
-}
-
-//Pasar la solicitud al método Route
-directionsService.route(request, function (result, status) {
-    if (status == google.maps.DirectionsStatus.OK) {
-
-        //Obtenemos la distancia y el tiempo
-        const output = document.querySelector('#output');
-        output.innerHTML = "<div class='alert-info'>Origen: " + document.getElementById("from").value + ".<br />Destino: " + document.getElementById("to").value + ".<br />Distancia<i class='fas fa-road'></i> : " + result.routes[0].legs[0].distance.text + ".<br />Duracion <i class='fas fa-hourglass-start'></i> : " + result.routes[0].legs[0].duration.text + ".</div>";
-
-        //Mostrar la ruta
-        directionsDisplay.setDirections(result);
-    } else {
-        //Eliminar la ruta del mapa
-        directionsDisplay.setDirections({ routes: [] });
-        //Centrar en Honduras
-        map.setCenter(myLatLng);
-
-        //Mostrar mensaje de error
-        output.innerHTML = "<div class='alert-danger'><i class='fas fa-exclamation-triangle'></i> No se pudo recuperar la distancia de conducción.</div>";
+    //Creamos la solicitud
+    var request = {
+        origin: document.getElementById("from").value,
+        destination: document.getElementById("to").value,
+        travelMode: google.maps.TravelMode.DRIVING, //WALKING, BYCYCLING, TRANSIT
+        unitSystem: google.maps.UnitSystem.IMPERIAL
     }
-});
+
+    //Pasar la solicitud al método Route
+    directionsService.route(request, function (result, status) {
+        if (status == google.maps.DirectionsStatus.OK) {
+
+            //Obtenemos la distancia y el tiempo
+            const output = document.querySelector('#output');
+            output.innerHTML = "<div class='alert-info'>Origen: " + document.getElementById("from").value + ".<br />Destino: " + document.getElementById("to").value + ".<br />Distancia<i class='fas fa-road'></i> : " + result.routes[0].legs[0].distance.text + ".<br />Duracion <i class='fas fa-hourglass-start'></i> : " + result.routes[0].legs[0].duration.text + ".</div>";
+
+            //Mostrar la ruta
+            directionsDisplay.setDirections(result);
+        } else {
+            //Eliminar la ruta del mapa
+            directionsDisplay.setDirections({ routes: [] });
+            //Centrar en Honduras
+            map.setCenter(myLatLng);
+
+            //Mostrar mensaje de error
+            output.innerHTML = "<div class='alert-danger'><i class='fas fa-exclamation-triangle'></i> No se pudo recuperar la distancia de conducción.</div>";
+        }
+    });
 
 }
 
@@ -62,11 +49,11 @@ directionsService.route(request, function (result, status) {
 
 //Autocompletacion de los inputs
 const options = {
-componentRestrictions: { country: "hnd" },
-fields: ["address_components", "geometry", "icon", "name"],
-strictBounds: false,
-//Tipo que desea buscar
-types: ["address"],
+    componentRestrictions: { country: "hnd" },
+    fields: ["address_components", "geometry", "icon", "name"],
+    strictBounds: false,
+    //Tipo que desea buscar
+    types: ["address"],
 };
 
 // Autocompletado del input from
