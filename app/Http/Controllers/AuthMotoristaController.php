@@ -28,6 +28,18 @@ class AuthMotoristaController extends Controller
 
                 'cuentaBancaria' => 'required|string|max:25|unique:motorista',
                 'nombreBanco' => 'required|string|max:25',
+                
+
+                idVehiculo int primary key IDENTITY(1,1), 
+                numeroPlaca varchar(25) not null unique,*
+                foto varchar(255) not null unique, 
+                tipo varchar(255) not null, *
+                anio varchar(255) not null, *
+                marca varchar(25) not null, *
+                permisoExplitacion varchar(50) not null, *
+                porcentajeComision decimal(15,2)
+
+
             ]
         );
 

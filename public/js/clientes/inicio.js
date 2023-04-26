@@ -107,9 +107,6 @@ function login(){
       console.log(data.user);      
       window.location.replace('solicitud')
       }
-      document.getElementById('error').innerHTML = `<div class="alert alert-danger" role="alert">
-      Credenciales invalidas
-   </div>`;
       
       
     })
@@ -117,6 +114,9 @@ function login(){
       
       console.log(error);
       
+      document.getElementById('error').innerHTML = `<div class="alert alert-danger" role="alert">
+      Credenciales invalidas
+   </div>`;
       
   
      });

@@ -66,22 +66,25 @@
             <h1 class="text-center my-5">Datos del vehiculo</h1>
 
             <label class="form-label">Numero de placa del vehiculo:</label>
-            <input type="text" name="numeroPlaca" class="form-control form-control-lg mb-3">
+            <input type="text" id="numeroPlaca" class="form-control form-control-lg mb-3">
 
             <label class="form-label">Tipo de vehiculo:</label>
-            <input type="text" name="tipo" class="form-control form-control-lg mb-3">
+            <input type="text" id="tipo" class="form-control form-control-lg mb-3">
 
             <label class="form-label">Anio del vehiculo:</label>
-            <input type="number" min="1900" max="2099" name="anio" class="form-control form-control-lg mb-3">
+            <input type="number" id="anio" min="1900" max="2099"  class="form-control form-control-lg mb-3">
 
             <label class="form-label">Marca del vehiculo:</label>
-            <input type="text" name="marca" class="form-control form-control-lg mb-3">
+            <input type="text" id="marca" class="form-control form-control-lg mb-3">
 
             <label class="form-label">Permiso explotacion del vehiculo:</label>
-            <input type="text" name="permisoExplitacion" class="form-control form-control-lg mb-3">
+            <input type="text" id="permisoExplitacion" class="form-control form-control-lg mb-3">
+
+            <label class="form-label">Url foto</label>
+            <input type="text" id="foto" class="form-control form-control-lg mb-3">
 
             <label class="form-label">Color del vehiculo:</label>
-            <input type="text" name="color" class="form-control form-control-lg mb-3">
+            <input type="text" id="color" class="form-control form-control-lg mb-3">
 
             <div class="text-center">
                 <button class="btn btn-danger btn-lg mt-4">Registrarse</button>
