@@ -28,6 +28,18 @@ class AuthMotoristaController extends Controller
 
                 'cuentaBancaria' => 'required|string|max:25|unique:motorista',
                 'nombreBanco' => 'required|string|max:25',
+
+                
+
+                idVehiculo int primary key IDENTITY(1,1), 
+                numeroPlaca varchar(25) not null unique,*
+                foto varchar(255) not null unique, 
+                tipo varchar(255) not null, *
+                anio varchar(255) not null, *
+                marca varchar(25) not null, *
+                permisoExplitacion varchar(50) not null, *
+                porcentajeComision decimal(15,2)
+
             ]
         );
 
@@ -86,7 +98,9 @@ class AuthMotoristaController extends Controller
             DB::connection('sqlsrv')->rollback();
             throw $e;
             
-            return response()->json(['message' => 'Error creando cliente motorista'], 500);
+
+            return response()->json(['error' => 'Error creando cliente motorista'], 500);
+
         }
     }
 
@@ -100,7 +114,9 @@ class AuthMotoristaController extends Controller
             if($user->motorista == null){//no esta relacionado a un motorista
                 
                 return response()
-                   ->json(['message' => 'No autorizado motorista'], 401);
+
+                   ->json(['error' => 'No autorizado motorista'], 401);
+
             } 
 
 
@@ -124,18 +140,23 @@ class AuthMotoristaController extends Controller
                     'accessToken' => $token,
                     'token_type' => 'Bearer',
                     'user' => $user
-                ]
+
+                ],
+                200
             );
             } else {
                 return response()
-           ->json(['message' => 'fallo interno'], 401);
+           ->json(['error' => 'fallo interno'], 401);
+
             }
           
         }
         
 
             return response()
-           ->json(['message' => 'No autorizado'], 401);
+
+           ->json(['error' => 'No autorizado'], 401);
+
         
     }
 
@@ -157,7 +178,9 @@ class AuthMotoristaController extends Controller
 
         } else {
             return response()
-       ->json(['message' => 'fallo interno'], 401);
+
+       ->json(['error' => 'fallo interno'], 401);
+
         }
         
         

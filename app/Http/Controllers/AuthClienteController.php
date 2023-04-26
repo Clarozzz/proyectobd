@@ -27,7 +27,7 @@ class AuthClienteController extends Controller
                 'rtn' => 'required|string|max:20|unique:persona',
                 'fechaNacimiento' =>'required|date',
                 'email' => 'required|string|email|max:255|unique:persona',
-                'password' => 'required|string|min:8',
+
             ]
         );
 
@@ -55,7 +55,10 @@ class AuthClienteController extends Controller
                     'estaActivo' => true,
                     'estaHabilitado' => true,
                     'email' => $request ->email,
-                    'password' => bcrypt($request ->password)
+
+                    'password' => bcrypt($request ->password),
+                    
+
                 ]
             );
 
@@ -77,12 +80,19 @@ class AuthClienteController extends Controller
                 );
 
             $token = $user->createToken('auth_token')->plainTextToken;
+
+            $user->remember_token = $token;
+            $user->save();
+
+
             DB::connection('sqlsrv')->commit();
 
 
             $user = User::with('cliente')->find($user->idPersona);
             return response()
-            ->json(['data' => $user, 'access_token' => $token , 'token_type' => 'Bearer']);
+
+            ->json(['data' => $user, 'access_token' => $token , 'token_type' => 'Bearer',200]);
+
 
             
         }
@@ -107,7 +117,9 @@ class AuthClienteController extends Controller
             if($user->cliente == null){//no esta relacionado a un cliente
                 
                 return response()
-                   ->json(['message' => 'No autorizado cliente'], 401);
+
+                   ->json(['error' => 'No autorizado cliente'], 401);
+
             } 
 
 
@@ -124,25 +136,35 @@ class AuthClienteController extends Controller
                 $user = User::with('cliente')->find($user->idPersona);
                 
                 $token = $user->createToken('auth_token')->plainTextToken;
+
+                $user->remember_token = $token;
+                $user->save();
+
                 return response()
             ->json(
                 [
                     'message' => 'Hola '.$user->name,
                     'accessToken' => $token,
                     'token_type' => 'Bearer',
-                    'user' => $user
-                ]
+
+                    'user' => $user,
+                   
+                ], 
+                200
             );
             } else {
                 return response()
-           ->json(['message' => 'fallo interno'], 401);
+           ->json(['error' => 'fallo interno'], 401);
+
             }
           
         }
         
 
             return response()
-           ->json(['message' => 'No autorizado'], 401);
+
+           ->json(['error' => 'No autorizado'], 401);
+
         
     }
 

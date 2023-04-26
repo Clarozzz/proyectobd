@@ -24,7 +24,6 @@
         <h1 class="text-center mb-5">Solicitudes</h1>
 
 
-
         <div class="d-flex flex-column align-items-center mt-3 mx-4">
 
             <div class="col-3">
@@ -42,7 +41,6 @@
 
                         <!-- Aceptar te debe llevar a la vista de factura -->
                         <form action="#">
-
                             <p class="text-center fs-5 px-5 mt-5"><button class="btn btn-success">Aceptar</button></p>
                         </form>
                     </div>

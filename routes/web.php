@@ -27,10 +27,12 @@ use Illuminate\Support\Facades\Route;
 -------------*/
 
 
-Route::get('/',  [ClienteController::class, 'index']);
 
 
-Route::get('/clientes', [ClienteController::class, 'index'])->name('clientes.inicio');
+
+
+Route::get('/clientes/inicio', [ClienteController::class, 'index'])->name('clientes.inicio');
+
 
 Route::get('/clientes/registro', [ClienteController::class, 'indexRegistro'])->name('clientes.registro');
 
@@ -38,7 +40,24 @@ Route::get('/clientes/solicitud', [ClienteController::class, 'indexSolicitud'])-
 
 Route::get('/clientes/factura', [ClienteController::class, 'indexFactura'])->name('clientes.factura');
 
-Route::post('/clientes', [ClienteController::class, 'store'])->name('clientes.store');
+
+// Route::get('/clientes', function () {
+//    return view('clientes.inicio');
+// })->name('clientes.inicio');
+
+// Route::get('/clientes/registro', function () {
+//     return view('clientes.registro');
+// })->name('clientes.registro');
+
+// Route::get('/clientes/solicitud', function () {
+//     return view('clientes.solicitud');
+// })->name('clientes.solicitud');
+
+// Route::get('/clientes/factura', function () {
+//     return view('clientes.factura');
+// })->name('clientes.factura');
+
+
 
 
 /*------------- 
@@ -48,17 +67,35 @@ Route::post('/clientes', [ClienteController::class, 'store'])->name('clientes.st
 -------------*/
 
 
-Route::get('/motoristas', [MotoristaController::class, 'index'])->name('motoristas.inicio');
+
+Route::get('/motoristas/inicio', [MotoristaController::class, 'index'])->name('motoristas.inicio');
+
 
 Route::get('/motoristas/registro', [MotoristaController::class, 'indexRegistro'])->name('motoristas.registro');
 
 Route::get('/motoristas/espera', [MotoristaController::class, 'indexEspera'])->name('motoristas.espera');
 
+
+
 Route::get('/motoristas/solicitud', [MotoristaController::class, 'indexSolicitud'])->name('motoristas.solicitud');
 
-Route::get('/motoristas/{solicitud}', [MotoristaController::class, 'factura'])->name('motoristas.factura');
+// Route::get('/motoristas', function () {
+//     return view('motoristas.inicio');
+// })->name('motoristas.inicio');
 
-Route::post('/motoristas', [MotoristaController::class, 'store'])->name('motoristas.store');
+// Route::get('/motoristas/registro', function () {
+//     return view('motoristas.registro');
+// })->name('motoristas.registro');
+
+
+// Route::get('/motoristas/espera', function () {
+//     return view('motoristas.espera');
+// })->name('motoristas.espera');
+
+// Route::get('/motoristas/solicitud', function () {
+//     return view('motoristas.solicitud');
+// })->name('motoristas.solicitud');
+
 
 
 /*------------- 
@@ -103,6 +140,33 @@ Route::get('/empleados/asignarsolicitud', [EmpleadoController::class, 'indexAsig
 ->name('empleados.asignarsolicitud');
 
 
+// Route::get('/empleados', function () {
+//     return view('empleados.inicio');
+// })->name('empleados.inicio');
+
+// Route::get('/empleados/index', function () {
+//     return view('empleados.index');
+// })->name('empleados.index');
+
+// Route::get('/empleados/motoristas', function () {
+//     return view('empleados.motoristas');
+// })->name('empleados.motoristas');
+
+
+// Route::get('/empleados/solicitudes', function () {
+//     return view('empleados.solicitudes');
+// })->name('empleados.solicitudes');
+
+// Route::get('/empleados/clientes', function () {
+//     return view('empleados.clientes');
+// })->name('empleados.clientes');
+
+// Route::get('/empleados/asignarSolicitud', function () {
+//     return view('empleados.asignarsolicitud');
+// })->name('empleados.asignarSolicitud');
+
+
+
 /*------------- 
 
     RRHH 
@@ -127,4 +191,18 @@ Route::post('/talentoHumano/loginRRHH', [AuthEmpleadosController::class, 'inicio
 
 Route::get('/talentoHumano/logoutRRHH', [AuthEmpleadosController::class, 'cerrarSesionRRHH'])
 ->middleware('auth.RRHH')
+
 ->name('logout.cerrarRRHH');
+
+// Route::get('/recursosHumanos', function () {
+//     return view('rrhh.inicio');
+// })->name('recursosHumanos.inicio');
+
+// Route::get('/recursosHumanos/index', function () {
+//     return view('rrhh.index');
+// })->name('recursosHumanos.index');
+
+// Route::get('/recursosHumanos/empleados', function () {
+//     return view('rrhh.empleados');
+// })->name('recursosHumanos.empleados');
+

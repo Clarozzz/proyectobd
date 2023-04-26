@@ -17,12 +17,38 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+
+    
+
+    if($request->user()->cliente != null){
+        return $request->user()->primerNombre;
+    }
+
+
+    if($request->user()->motorista != null){
+        return $request->user()->email;
+    }
+
 });
 
 /* rutas accesibles a usuarios sin logearse CLIENTES*/  
 Route::post('cliente/registro', [AuthClienteController::class, 'register']);
 Route::post('cliente/iniciarSesion', [AuthClienteController::class, 'login']);
+
+
+
+Route::middleware('auth:sanctum')->get('cliente/verificar', function (Request $request) {
+    
+
+    if($request->user()->cliente != null){
+        return $request->user();
+    }
+
+    return response()
+    ->json(['message' => 'No es un cliente'], 401);
+    
+});
+
 
 
 Route::group(['prefix' => 'cliente','middleware' => 'auth:sanctum'],function(){ //rutas accesibles solo a usuarios clientes logeados "api/cliente/.."
@@ -37,6 +63,21 @@ Route::group(['prefix' => 'cliente','middleware' => 'auth:sanctum'],function(){ 
 /* rutas accesibles a usuarios sin logearse CLIENTES*/  
 Route::post('motorista/registro', [AuthMotoristaController::class, 'register']);
 Route::post('motorista/iniciarSesion', [AuthMotoristaController::class, 'login']);
+
+
+Route::middleware('auth:sanctum')->get('motorista/verificar', function (Request $request) {
+    
+
+    if($request->user()->motorista != null){
+        //return $request->user();
+        return response()->json([$request->user()], 200);
+    }
+
+    return response()
+    ->json(['message' => 'No es un motorista'], 401);
+    
+});
+
 
 
 Route::group(['prefix' => 'motorista','middleware' => 'auth:sanctum'],function(){ //rutas accesibles solo a usuarios motoristas logeados "api/cliente/.."

@@ -23,48 +23,6 @@
     <main id="paginaPrincipal" class="my-5">
         <h1 class="text-center mb-5">Empleados</h1>
 
-        <form action="" class="d-flex flex-column align-items-center">
-            <button class="btn btn-success">Agregar empleado</button>
-        </form>
-
-        <div class="m-5">
-            <table class="table" style="table-layout: fixed; width:100%">
-                <thead>
-                    <tr>
-                        <th scope="col">IdEmpleado</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Apellido</th>
-                        <th scope="col">DNI</th>
-                        <th scope="col">Sucural</th>
-                        <th scope="col">Fecha inicio</th>
-                        <th scope="col">Salario</th>
-                        <th scope="col">Tipo de empleado</th>
-                        <th scope="col">EDITAR</th>
-                        <th scope="col">ELIMINAR</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($empleados as $empleado)
-                    <tr>
-                        <th scope="row">{{$empleado->idEmpleado}}</th>
-                        <td>{{$empleado->primerNombre}}</td>
-                        <td>{{$empleado->primerApellido}}</td>
-                        <td>{{$empleado->dni}}</td>
-                        <td>{{$empleado->idSucursal}}</td>
-                        <td>{{$empleado->fechaInicio}}</td>
-                        <td>{{$empleado->salario}}</td>
-                        <td>{{$empleado->tipoEmpleado}}</td>
-                        <td><a href="{{route('rrhh.editEmpleado', $empleado->idEmpleado)}}">Editar</a></td>
-                        <form action="{{route('rrhh.destroyEmpleado', $empleado->idEmpleado)}}" method="post">
-                            @csrf
-                            @method('delete')
-                            <td><button class="btn btn-danger">Eliminar</button></td>
-                        </form>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
 
     </main>
 
