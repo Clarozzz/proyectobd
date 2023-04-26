@@ -29,32 +29,38 @@
     <main id="apartado-inicio-sesion">
         <!-- Datos de la empresa -->
         <h1 class="text-center mt-5 mb-3">Scam</h1>
-        <h6 class="text-center"><strong>Correo:</strong> {{$empresa->email}}</h6>
-        <h6 class="text-center"><strong>rtn:</strong> {{$empresa->rtn}}</h6>
-        <h6 class="text-center"><strong>Nro. sucursal</strong>: {{$sucursal->numSucursal}}</h6>
-        <h6 class="text-center"><strong>Telefono</strong>: {{$sucursal->telefono}}</h6>
-        <h6 class="text-center"><strong>Direccion</strong>: {{$sucursal->direccion}}</h6>
+
+        <h6 class="text-center"><strong>Correo:</strong> </h6>
+        <h6 class="text-center"><strong>rtn:</strong> </h6>
+        <h6 class="text-center"><strong>Nro. sucursal</strong>: </h6>
+        <h6 class="text-center"><strong>Telefono</strong>: </h6>
+        <h6 class="text-center"><strong>Direccion</strong>: </h6>
 
         <!-- Datos de la factura -->
         <h3 class="text-center my-3">Factura</h3>
-        <h6 class="text-center"><strong>CAI:</strong> {{$empresa->cai}}</h6>
-        <h6 class="text-center"><strong>Caja:</strong> {{$cajaDigital->numeroCaja}}</h6>
-        <h6 class="text-center"><strong>Nro. factura:</strong> {{$factura->numFactura}}</h6>
-        <h6 class="text-center"><strong>Fecha limite:</strong> {{$sar->fechaLImite}}</h6>
-        <h6 class="text-center"><strong>Nro. inicial:</strong> {{$sar->inicioRango}}</h6>
-        <h6 class="text-center"><strong>Nro. final:</strong> {{$sar->finalRango}}</h6>
+        <h6 class="text-center"><strong>CAI:</strong> </h6>
+        <h6 class="text-center"><strong>Caja:</strong> </h6>
+        <h6 class="text-center"><strong>Nro. factura:</strong> </h6>
+        <h6 class="text-center"><strong>Fecha limite:</strong> </h6>
+        <h6 class="text-center"><strong>Nro. inicial:</strong> </h6>
+        <h6 class="text-center"><strong>Nro. final:</strong> </h6>
         <h6 class="text-center">-------------------------------</h6>
 
-        <h6 class="text-center"><strong>Fecha:</strong> {{$factura->fecha}}</h6>
-        <h6 class="text-center"><strong>sub total:</strong> {{$solicitud->subTotal}}</h6>
-        <h6 class="text-center"><strong>impuesto:</strong> {{$solicitud->valor}}</h6>
-        <h6 class="text-center"><strong>total:</strong> {{$solicitud->total}}</h6>
+        <h6 class="text-center"><strong>Fecha:</strong> </h6>
+        <h6 class="text-center"><strong>Motorista:</strong></h6>
+        <h6 class="text-center"><strong>sub total:</strong> </h6>
+        <h6 class="text-center"><strong>impuesto:</strong></h6>
+        <h6 class="text-center"><strong>total:</strong></h6>
 
-        <form action="{{route('clientes.solicitud')}}">
+        <form action="#">
+
             <p class="text-center fs-5 px-5 mt-5"><button class="btn btn-success">Aceptar</button></p>
         </form>
 
     </main>
+
+
+    <script src="{{ asset('js/clientes/factura.js') }}"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>

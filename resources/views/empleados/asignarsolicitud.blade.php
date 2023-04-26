@@ -25,23 +25,27 @@
 
         <div class="d-flex flex-column align-items-center mt-3 mx-4">
 
-            @foreach ($motoristas as $motorista)
+
+
             <div class="col-3">
                 <div class="card mb-3">
                     <div class="card-body">
                         <h3 class="text-center text-info">Motorista</h3>
-                        <h6 class="text-center"><strong>Nombre:</strong> {{$motorista->primerNombre}} {{$motorista->primerApellido}}</h6>
-                        <h6 class="text-center"><strong>Ubicacion actual:</strong> {{$motorista->ubicacionActual}}</h6>
-                        <h6 class="text-center"><strong>Telefono:</strong> {{$motorista->telefono}}</h6>
-                        <h6 class="text-center"><strong>Vehiculo:</strong> {{$motorista->marca}} {{$motorista->anio}} {{$motorista->tipo}} {{$motorista->numeroPlaca}}</h6>
 
-                        <form action="#">
+                        <h6 class="text-center"><strong>Nombre:</strong> San goloteas</h6>
+                        <h6 class="text-center"><strong>Ubicacion actual:</strong> Lago antaras</h6>
+                        <h6 class="text-center"><strong>Telefono:</strong> 8794-5958</h6>
+                        <h6 class="text-center"><strong>Vehiculo:</strong> Honda civic 1998</h6>
+
+                        <form action="">
+
                             <p class="text-center fs-5 px-5 mt-4"><button class="btn btn-success">Asignar</button></p>
                         </form>
                     </div>
                 </div>
             </div>
-            @endforeach
+
+
 
         </div>
     </main>
