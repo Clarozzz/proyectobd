@@ -149,4 +149,5 @@ class EmpleadoController extends Controller
     {
         //
     }
+    
 }
