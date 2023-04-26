@@ -29,39 +29,46 @@
     <main id="apartado-inicio-sesion">
         <h1 class="text-center mt-5">Registrarse</h1>
 
-        <form action="{{route('motoristas.espera')}}" class="px-5 mt-4">
+        <div  class="px-5 mt-4">
             <label class="form-label">Primer nombre:</label>
-            <input type="text" name="primerNombre" class="form-control form-control-lg mb-3">
+            <input type="text" id="primerNombre" class="form-control form-control-lg mb-3">
 
             <label class="form-label">Segundo nombre:</label>
-            <input type="text" name="segundoNombre" class="form-control form-control-lg mb-3">
+            <input type="text" id="segundoNombre" class="form-control form-control-lg mb-3">
 
             <label class="form-label">Primer apellido:</label>
-            <input type="text" name="primerApellido" class="form-control form-control-lg mb-3">
+            <input type="text" id="primerApellido" class="form-control form-control-lg mb-3">
 
             <label class="form-label">Segundo apellido:</label>
-            <input type="text" name="segundoApellido" class="form-control form-control-lg mb-3">
+            <input type="text" id="segundoApellido" class="form-control form-control-lg mb-3">
+
+            <label class="form-label">Nombre de usuario:</label>
+            <input type="text" id="nombreUsuario" class="form-control form-control-lg mb-3">
 
             <label class="form-label">Email:</label>
-            <input type="text" name="email" class="form-control form-control-lg mb-3">
+            <input type="text" id="email" class="form-control form-control-lg mb-3">
 
             <label class="form-label">Telefono:</label>
-            <input type="text" name="telefono" class="form-control form-control-lg mb-3">
+            <input type="text" id="telefono" class="form-control form-control-lg mb-3">
 
             <label class="form-label">DNI:</label>
-            <input type="text" name="dni" class="form-control form-control-lg mb-3">
+            <input type="text" id="dni" class="form-control form-control-lg mb-3">
 
             <label class="form-label">RTN:</label>
-            <input type="text" name="rtn" class="form-control form-control-lg mb-3">
+            <input type="text" id="rtn" class="form-control form-control-lg mb-3">
 
             <label class="form-label">Fecha de nacimiento:</label>
-            <input type="date" name="fechaNacimiento" class="form-control form-control-lg mb-3">
+            <input type="date" id="fechaNacimiento" class="form-control form-control-lg mb-3">
+
+
+            <label class="form-label">Nombre de banco:</label>
+            <input type="text" id="nombreBanco" class="form-control form-control-lg mb-3">
 
             <label class="form-label">Cuenta bancaria:</label>
-            <input type="text" name="cuentaBancaria" class="form-control form-control-lg mb-3">
+            <input type="text" id="cuentaBancaria" class="form-control form-control-lg mb-3">
 
             <label class="form-label">Contrasena:</label>
-            <input type="password" name="contrasena" class="form-control form-control-lg mb-3">
+            <input type="password" id="password" class="form-control form-control-lg mb-3">
             
             <h1 class="text-center my-5">Datos del vehiculo</h1>
 
@@ -87,9 +94,16 @@
             <input type="text" id="color" class="form-control form-control-lg mb-3">
 
             <div class="text-center">
-                <button class="btn btn-danger btn-lg mt-4">Registrarse</button>
+                <button onclick="registrarse()" class="btn btn-danger btn-lg mt-4">Registrarse</button>
             </div>
-        </form>
+        </div>
+
+        <p  id="error" >
+            
+        </p>
+
+
+
 
         <form action="{{route('motoristas.inicio')}}">
             <p class="text-center fs-5 px-5 mt-5">¿Ya tienes una cuenta? <button class="btn btn-link mb-5">Inicar sesion</button></p>
@@ -97,6 +111,9 @@
 
     </main>
 
+
+
+    <script src="{{ asset('js/motoristas/registro.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
 

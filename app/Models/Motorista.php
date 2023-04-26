@@ -27,9 +27,9 @@ class Motorista extends Model
     }
 
 
-    public function vehiculos(){
-        return $this->belongsToMany('App\Models\Vehiculo')
-        ->withPivot('vehiculoActivo');
-
-    }
+    public function vehiculos()
+{
+    return $this->belongsToMany(Vehiculo::class, 'motorista_vehiculo', 'idMotorista', 'idVehiculo')->withPivot('vehiculoActivo');
+}
+    
 }

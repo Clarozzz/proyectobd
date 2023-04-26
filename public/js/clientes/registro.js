@@ -73,6 +73,11 @@ datosCliente =
         fechaNacimiento : document.getElementById('fechaNacimiento').value,
         nombreEmpresa : document.getElementById('nombreEmpresa').value,
         password : document.getElementById('password').value,
+
+
+
+
+
     } 
 
     console.log(datosCliente)
@@ -109,11 +114,17 @@ function enviarCredenciales(datosCliente){
 
         localStorage.setItem('token', data.access_token);
         //console.log(data) 
-        window.location.replace('solicitud');
+        window.location.replace('espera');
         
     }
-        
+    console.log(error);
+
+
+    
     throw new Error('Credenciales invalidas');
+
+    
+    
     
    
     })
@@ -122,11 +133,13 @@ function enviarCredenciales(datosCliente){
     console.log(error);
     
 
+    document.getElementById('error').innerHTML = `<div class="alert alert-danger" role="alert">
+    Credenciales invalidas
+ </div>`;
+        
+
     
-   document.getElementById('error').innerHTML = `<div class="alert alert-danger" role="alert">
-   Credenciales invalidas
-</div>`;
-   
+
     
 
    });

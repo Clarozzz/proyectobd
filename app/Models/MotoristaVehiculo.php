@@ -9,9 +9,16 @@ class MotoristaVehiculo extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'idMotorista',
+        'idVehiculo',
+        'vehiculoActivo'
+    ];
+
     protected $table = 'motorista_vehiculo';
 
     public $timestamps = false;
 
-    public $primaryKey = 'idMotoristaVehiculo';
+    
+
 }

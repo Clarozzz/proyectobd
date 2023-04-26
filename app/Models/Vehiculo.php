@@ -17,6 +17,7 @@ class Vehiculo extends Model
 
 
     protected $fillable = [
+        'idVehiculo',
     'numeroPlaca',
 	'foto',
 	'tipo',
@@ -35,9 +36,10 @@ class Vehiculo extends Model
 
 
     public function colores(){
-        return $this->belongsToMany('App\Models\Color');
-
+        return $this->belongsToMany(Color::class, 'vehiculo_color', 'idVehiculo', 'idColor');
     }
+
+    
 
     
 
