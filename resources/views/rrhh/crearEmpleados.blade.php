@@ -27,39 +27,33 @@
     </nav>
 
     <main id="apartado-inicio-sesion">
-        <h1 class="text-center mt-5">Editar empleado</h1>
+        <h1 class="text-center mt-5">Crear empleado</h1>
 
-        <form action="{{route('empleados.update', $empleado->idEmpleado)}}"   method="POST" class="px-5 mt-4">
+        <form action="{{ route('empleados.store') }}" class="px-5 mt-4" method="POST">
             @csrf
-            @method('PUT')
-            <label class="form-label">Codigo Empleado:</label>
-            <input type="text" name="idEmpleado" class="form-control form-control-lg mb-3" value="{{$empleado->idEmpleado}}" disabled>
-           
             <label class="form-label">Primer nombre:</label>
-            <input type="text" name="primerNombre" class="form-control form-control-lg mb-3" value="{{$empleado->primerNombre}}" disabled>
+            <input type="text" name="primerNombre" class="form-control form-control-lg mb-3">
 
             <label class="form-label">Primer apellido:</label>
-            <input type="text" name="primerApellido" class="form-control form-control-lg mb-3" value="{{$empleado->primerApellido}}" disabled>
+            <input type="text" name="primerApellido" class="form-control form-control-lg mb-3">
 
             <label class="form-label">DNI:</label>
-            <input type="text" name="dni" class="form-control form-control-lg mb-3" value="{{$empleado->dni}}" disabled>
+            <input type="text" name="dni" class="form-control form-control-lg mb-3">
             
             <label class="form-label">Sucursal:</label>
-            <input type="text" name="sucursal" class="form-control form-control-lg mb-3" value="{{$empleado->idSucursal}}">
+            <input type="text" name="sucursal" class="form-control form-control-lg mb-3">
 
             <label class="form-label">Fecha inicio:</label>
-            <input type="text" name="fechaInicio" class="form-control form-control-lg mb-3" value="{{$empleado->fechaInicio}}">
+            <input type="text" name="fechaInicio" class="form-control form-control-lg mb-3">
 
             <label class="form-label">Salario:</label>
-            <input type="text" name="salario" class="form-control form-control-lg mb-3" value="{{$empleado->salario}}">
+            <input type="text" name="salario" class="form-control form-control-lg mb-3">
 
             <label class="form-label">Tipo empleado:</label>
-            <input type="text" name="tipoEmpleado" class="form-control form-control-lg mb-3" value="{{$empleado->tipoEmpleado}}">
+            <input type="text" name="tipoEmpleado" class="form-control form-control-lg mb-3">
 
             <div class="text-center">
-
                 <button type="submit" class="btn btn-danger mt-4">Guardar</button>
-
             </div>
         </form>
 
