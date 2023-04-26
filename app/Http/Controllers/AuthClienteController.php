@@ -58,7 +58,7 @@ class AuthClienteController extends Controller
                     
                 ]
             );
-
+//cc
             $esExonerado = false;
 
             if($request ->esExonerado != null){
